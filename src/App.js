@@ -2,7 +2,7 @@ import Header from "./Components/Header";
 
 const App = () => {
   return (
-    <div className="bg-black">
+    <div className="bg-[#212121]">
       <Header/>
     </div>
   );
