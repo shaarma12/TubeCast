@@ -4,7 +4,7 @@ import VideoContainer from './VideoContainer'
 
 const Body = () => {
   return (
-    <div className='bg-[#212121]'>
+    <div className='bg-[#212121] h-screen'>
       <div>
         <Tags />
         <VideoContainer />
