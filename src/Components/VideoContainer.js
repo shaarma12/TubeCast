@@ -18,8 +18,10 @@ const VideoContainer = () => {
   }, [])
   
   return (
-    <div className='ml-[4.2rem] mt-8'>
-      <Video data={youtubeData?.items[0]}/>
+    <div className='ml-[4.2rem] mt-8 flex flex-wrap gap-5'>
+      {youtubeData?.items.map((i) => {
+        return <Video data={i} />
+      })}
     </div>
   )
 }
