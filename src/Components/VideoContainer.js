@@ -10,7 +10,7 @@ const VideoContainer = () => {
     const data = await fetch(YOUTUBE_API);
     const response = await data.json();
     setYouTubeData(response);
-    console.log("youtube",youtubeData);
+    console.log("youtube",response);
   }
 
   useEffect(() => {
