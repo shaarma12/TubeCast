@@ -92,11 +92,11 @@ const Video = ({ data }) => {
   }
 
   return (
-    <div className='w-[21rem] h-[21rem] shadow-xl'>
-      <img src={data?.snippet?.thumbnails?.maxres?.url} alt='videoImage' className='rounded-lg w-[55rem] h-48' />
+    <div className='w-[21rem] h-[21rem]'>
+      <img src={data?.snippet?.thumbnails?.maxres?.url?data?.snippet?.thumbnails?.maxres?.url:data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-lg w-[55rem] h-48' />
       <div className='flex mt-3'>
-        <img />
-        <div className='ml-12'>
+      <img src={data?.snippet?.thumbnails?.maxres?.url?data?.snippet?.thumbnails?.maxres?.url:data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-full w-10 h-10' />
+        <div className='ml-3'>
           <p className='text-white w-[17.5rem] font-semibold text-lg'>{(data?.snippet?.localized?.title).length > 55 ? data?.snippet?.localized?.title.substr(0, 55) + "..." : data?.snippet?.localized?.title}</p>
           <p className='text-[#AAAAAA] font-semibold'>{data?.snippet?.channelTitle.length > 32 ?data?.snippet?.channelTitle.substr(0,32):data?.snippet?.channelTitle}</p>
           <div className='text-[#AAAAAA] font-semibold flex'>
