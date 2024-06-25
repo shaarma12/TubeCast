@@ -4,12 +4,21 @@ import search from "../Images/search.svg"
 import notification from "../Images/notification.svg"
 import create from "../Images/create.png"
 import user from "../Images/user.png"
+import {useDispatch} from "react-redux"
+import { toogleState } from "../utils/toggleSlice"
+import { useState } from "react"
+
 const Header = () => {
+    const [tog, setTog] = useState(false);
+    const dispatch = useDispatch();
     return (
         <>
             <div className="py-3 flex items-center justify-between">
                 <div className="xl:w-12 w-28 flex justify-center items-center">
-                    <img src={menu} alt="hamburger" className="md:h-5 h-3 lg:ml-14 md:ml-8 xl:ml-28 xl:w-12 lg:w-12 md:w-5 w-3 -ml-3 hover:cursor-pointer" />
+                    <img src={menu} alt="hamburger" className="md:h-5 h-3 lg:ml-14 md:ml-8 xl:ml-28 xl:w-12 lg:w-12 md:w-5 w-3 -ml-3 hover:cursor-pointer" onClick={() => {
+                        setTog(true);
+                        dispatch(toogleState(true));
+                    }}/>
                     <div className="flex items-center">
                         <img src={logo} alt="YouTube" className="xl:h-10 lg:h-10 md:h-7 h-5 relative md:left-7 left-3" />
                         <p className="text-white relative md:left-8 left-3 xl:text-2xl lg:text-2xl md:text-lg text-sm font-semibold font-sans tracking-tighter">YouTube</p>
