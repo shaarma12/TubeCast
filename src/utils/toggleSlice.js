@@ -6,8 +6,8 @@ const toggleSlice = createSlice({
         flag: false,
     },
     reducers: {
-        toogleState: (action, state) => {
-            state.flag = action.payload;
+        toogleState: (state, action) => {
+            state.flag = !state.flag;
         }
     }
 });
