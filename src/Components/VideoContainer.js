@@ -19,7 +19,7 @@ const VideoContainer = () => {
 
   return (
     <div>
-      {toggle?<div className='ml-[4.2rem] mt-8 flex flex-wrap gap-3'>
+      {toggle?<div className='ml-[4.2rem] mt-8 flex flex-wrap gap-3 h-[35rem] overflow-y-scroll no-scrollbar'>
         {youtubeData?.items.map((i) => {
           return <Video data={i} />
         })}

@@ -4,7 +4,7 @@ import VideoContainer from './VideoContainer'
 import Sidebar from './Sidebar'
 const Body = () => {
   return (
-    <div className='bg-[#212121] flex'>
+    <div className='bg-[#212121] flex '>
       <Sidebar/>
       <div>
         <Tags />

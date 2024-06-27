@@ -4,6 +4,7 @@ import { SIDEBARS, YOU, EXPLORE } from "../constant"
 import arrow from "../Images/arrow.png"
 const LargeSidebar = () => {
   return (
+    <div className='h-[40rem] overflow-y-scroll no-scrollbar'>
     <div className="mt-4">
       {SIDEBARS.map((i) => {
         return <SidebarData data={i} />
@@ -27,7 +28,8 @@ const LargeSidebar = () => {
           })}
         </div>
       </div>
-    </div>
+      </div>
+      </div>
   )
 }
 

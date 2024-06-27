@@ -95,7 +95,7 @@ const Video = ({ data }) => {
 
   return (
     <div>
-      {toggle?<div className='w-[24.2rem] h-[21rem] mb-6'>
+      {toggle?<div className='w-[24.2rem] h-[21rem] mb-6 hover:cursor-pointer'>
         <img src={data?.snippet?.thumbnails?.maxres?.url ? data?.snippet?.thumbnails?.maxres?.url : data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-lg w-[55rem] h-56' />
         <div className='flex mt-3'>
           <img src={data?.snippet?.thumbnails?.maxres?.url ? data?.snippet?.thumbnails?.maxres?.url : data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-full w-10 h-10' />
@@ -109,7 +109,7 @@ const Video = ({ data }) => {
             </div>
           </div>
         </div>
-      </div>:<div className='w-[21rem] h-[21rem]'>
+      </div>:<div className='w-[21rem] h-[21rem] hover:cursor-pointer'>
         <img src={data?.snippet?.thumbnails?.maxres?.url ? data?.snippet?.thumbnails?.maxres?.url : data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-lg w-[55rem] h-48' />
         <div className='flex mt-3'>
           <img src={data?.snippet?.thumbnails?.maxres?.url ? data?.snippet?.thumbnails?.maxres?.url : data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-full w-10 h-10' />
