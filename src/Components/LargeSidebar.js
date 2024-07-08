@@ -29,7 +29,7 @@ const LargeSidebar = () => {
         </div>
       </div>
       <div className="border-t-[0.3px] border-gray-500 mt-3 ml-4">
-        <p className="text-white font-medium text-lg mt-4 ml-2 mr-2 mb-2 px-2">Explore </p>
+        <p className="text-white font-medium text-lg mt-4 ml-1 mr-2 mb-2 px-2">More from YouTube </p>
         <div className="-ml-4">
           {MORE.map((i) => {
             return <SidebarData data={i} />
@@ -37,11 +37,17 @@ const LargeSidebar = () => {
         </div>
       </div>
       <div className="border-t-[0.3px] border-gray-500 mt-3 ml-4">
-        <p className="text-white font-medium text-lg mt-4 ml-2 mr-2 mb-2 px-2">Explore </p>
-        <div className="-ml-4">
+        <div className="-ml-4 mt-3">
           {GENERAL.map((i) => {
             return <SidebarData data={i} />
           })}
+        </div>
+        </div>
+        <div className="border-t-[0.3px] border-gray-500 mt-3 ml-4">
+        <div className="-ml-4">
+          <p className='text-[#AAAAAA] w-44 ml-8 mt-3 font-semibold'>About  Press  Copyright  Contact us  Creators  Advertise  Developers</p>
+          <p className='text-[#AAAAAA] w-44 ml-8 mt-3 font-semibold'>Terms Privacy Policy & Safety How YouTube works Test new features</p>
+          <p className='text-[#717171] w-44 ml-8 mt-3 font-semibold mb-4'>© 2024 ReTube LLC</p>
         </div>
       </div>
       </div>
