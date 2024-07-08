@@ -99,16 +99,16 @@ export const EXPLORE = [{
 
 export const MORE = [{
     icon: logo,
-    name: "YouTube Premium"
+    name: "TubeCast Premium"
 }, {
     icon: studio,
-    name: "YouTube Studio"
+    name: "TubeCast Studio"
 }, {
     icon: ymusic,
-    name: "YouTube Music"
+    name: "TubeCast Music"
 }, {
     icon: kids,
-    name: "YouTube kids"
+    name: "TubeCast kids"
     },];
 
 export const GENERAL = [{

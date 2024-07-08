@@ -18,7 +18,7 @@ const Header = () => {
                     }}/>
                     <div className="flex items-center">
                         <img src={logo} alt="YouTube" className="xl:h-10 lg:h-10 md:h-7 h-5 relative md:left-7 left-3" />
-                        <p className="text-white relative md:left-8 left-3 xl:text-2xl lg:text-2xl md:text-lg text-sm font-semibold font-sans tracking-tighter">YouTube</p>
+                        <p className="text-white relative md:left-8 left-3 xl:text-2xl lg:text-2xl md:text-lg text-sm font-semibold font-sans tracking-tighter">TubeCast</p>
                         </div>
                 </div>
                 <div className="flex">
