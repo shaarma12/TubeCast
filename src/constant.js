@@ -31,7 +31,8 @@ export const YOUTUBE_API = "https://youtube.googleapis.com/youtube/v3/videos?par
 export const TAGS = ["All", "Live", "Sports", "Software", "Reaction", "News", "Cricket", "Movies", "Thriller", "Indian", "Mixes", "Album", "Recently", "Football", "Shoes", "Clothes", "Fashion", "Taj", "Phones", "Shirts", "England", "TV", "Fridge"];
 export const SIDEBARS = [{
     icon: Home,
-    name: "Home"
+    name: "Home",
+    link:"/"
 }, {
     icon: shorts,
     name: "Shorts"
