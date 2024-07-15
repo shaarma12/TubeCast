@@ -1,8 +1,10 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
+import React, { useDebugValue } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { toogleTag } from '../utils/toggleSlice';
 
 const Video = ({ data }) => {
+  const dispatch = useDispatch();
   const toggle = useSelector((store) => store.Toggle.flag);
   const formatViewCount = (viewcount) => {
     if (viewcount >= 1000000) {
@@ -95,7 +97,9 @@ const Video = ({ data }) => {
   }
 
   return (
-    <div>
+    <div onClick={() => {
+      dispatch(toogleTag(false));
+    }}>
       {toggle?<Link to={`/watch?v=${data?.id}`}><div className='w-[24.2rem] h-[21rem] mb-6 hover:cursor-pointer'>
         <img src={data?.snippet?.thumbnails?.maxres?.url ? data?.snippet?.thumbnails?.maxres?.url : data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-lg w-[55rem] h-56' />
         <div className='flex mt-3'>
