@@ -7,7 +7,7 @@ const Body = () => {
   const tagToggle = useSelector((store) => store.Toggle.tag);
   return (
     <div className='bg-[#212121] flex '>
-      <Sidebar/>
+      <Sidebar />
       <div>
         {tagToggle&&<Tags />}
         <Outlet/>

@@ -4,10 +4,11 @@ import LargeSidebar from './LargeSidebar'
 import { useSelector } from 'react-redux'
 
 const Sidebar = () => {
-  const toggle = useSelector((store) => store.Toggle.flag);
+  const toggle = useSelector((store) => store.Toggle.flag); 
+  const sideBarsToggle = useSelector((store) => store.Toggle.sideBars);
   return (
     <div>
-      {toggle ? <LargeSidebar /> : <SmallSidebar />}
+      {toggle ? <LargeSidebar /> : sideBarsToggle&&<SmallSidebar />}
     </div>
   )
 }

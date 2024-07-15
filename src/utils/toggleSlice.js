@@ -4,7 +4,8 @@ const toggleSlice = createSlice({
     name: "Toggle",
     initialState: {
         flag: false,
-        tag:true,
+        tag: true,
+        sideBars:true,
     },
     reducers: {
         toogleState: (state, action) => {
@@ -12,8 +13,12 @@ const toggleSlice = createSlice({
         },
         toogleTag: (state, action) => {
             state.tag = action.payload;
-        }
+        },
+        toogleBars: (state, action) => {
+            state.sideBars = action.payload;
+        },
+        
     }
 });
 export default toggleSlice.reducer;
-export const { toogleState,toogleTag } = toggleSlice.actions;
+export const { toogleState,toogleTag,toogleBars } = toggleSlice.actions;
