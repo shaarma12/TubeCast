@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toogleBars, toogleState, toogleTag } from '../utils/toggleSlice';
+import { apiResponse } from '../utils/dataSlice';
 
 const Video = ({ data }) => {
   const dispatch = useDispatch();
@@ -101,6 +102,7 @@ const Video = ({ data }) => {
       dispatch(toogleTag(false));
       dispatch(toogleBars(false));
       dispatch(toogleState(false));
+      dispatch(apiResponse(data));
     }}>
       {toggle?<Link to={`/watch?v=${data?.id}`}><div className='w-[24.2rem] h-[21rem] mb-6 hover:cursor-pointer'>
         <img src={data?.snippet?.thumbnails?.maxres?.url ? data?.snippet?.thumbnails?.maxres?.url : data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-lg w-[55rem] h-56' />
