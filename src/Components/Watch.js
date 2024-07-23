@@ -34,7 +34,7 @@ const Watch = () => {
             <p className='text-[#AAAAAA] text-sm -mt-[0.15rem]'>54.9M subscribers</p>
           </div>
           {/* Subscribe Button */}
-          <button className='bg-[#F1F1F1] rounded-full w-[6.5rem] h-9 ml-7 font-medium mt-1'>Subscribe</button>
+          <button className='bg-[#F1F1F1] rounded-full w-[6.5rem] h-9 ml-5 font-medium mt-1'>Subscribe</button>
         </div>
         <div className='flex'></div>
       </div>
