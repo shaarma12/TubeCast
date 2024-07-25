@@ -30,17 +30,22 @@ const Watch = () => {
       <p className='text-white text-xl font-semibold w-[51rem] -mt-4'>{title}</p>
       <div className='flex mt-2'>
         <div className='flex'>
-          {/* channelLogo */}
           <img src={ thumbnails?.maxres?.url} className='w-10 h-10 rounded-full mr-3'/>
-          {/* channelName */}
           <div className='text-white'>
             <p className='text-md font-medium text-white -mt-[0.1rem]'>{channelTitle}</p>
             <p className='text-[#AAAAAA] text-sm -mt-[0.15rem]'>54.9M subscribers</p>
           </div>
-          {/* Subscribe Button */}
-          <button className='bg-[#F1F1F1] rounded-full w-[6.5rem] h-9 ml-5 font-medium mt-1'>Subscribe</button>
+          <button className='bg-[#F1F1F1] rounded-full w-[6.5rem] h-9 ml-6 font-medium mt-1 hover:opacity-85'>Subscribe</button>
         </div>
-        <div className='flex'></div>
+        <div className='flex ml-10 mt-1'>
+          <div className='flex items-center mr-2 ml-[4.6rem]'>
+          <button className='flex justify-center bg-[#FFFFFF1A] items-center w-[5.5rem] h-9 rounded-tl-3xl rounded-bl-3xl hover:bg-[#ffffff35] border-r-2 border-[#ffffff35] '><img src={likes} className='h-6 mx-1'/><p className='text-white font-semibold'>1.6M</p></button>
+            <button className='flex justify-center bg-[#FFFFFF1A] items-center w-14 h-9 rounded-tr-3xl rounded-br-3xl hover:bg-[#ffffff35]'><img src={unlike} className='h-6 mx-1' /></button>
+            </div>
+            <button className='flex mr-2 bg-[#FFFFFF1A] items-center w-[6rem] h-9 rounded-3xl  hover:bg-[#ffffff35]'><img src={share} className='h-6 mx-1 ml-2'/><p className='text-white font-semibold'>Share</p></button>
+            <button className='flex mr-2 bg-[#FFFFFF1A] items-center w-[5.5rem] h-9 rounded-3xl  hover:bg-[#ffffff35]'><img src={save} className='h-6 mx-1 ml-3'/><p className='text-white font-semibold'>Save</p></button>
+            <button className='flex justify-center bg-[#FFFFFF1A] items-center w-11 h-9 rounded-full hover:bg-[#ffffff35]'><img src={dots} className='h-6'/></button>
+        </div>
       </div>
     </div>
   );
