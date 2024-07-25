@@ -13,6 +13,17 @@ const Watch = () => {
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
   const videoSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  const formatLikeCount = (likecount) => {
+    if (likecount >= 1000000) {
+      return Math.floor((likecount / 1000000)) + 'M';
+    }
+    else if (likecount >= 1000) {
+      return Math.floor((likecount / 1000))+ 'K';
+    }
+    else {
+      return likecount;
+    }
+  }
 
   return (
     <div className='bg-[#212121] ml-40 mb-40'>
@@ -39,7 +50,7 @@ const Watch = () => {
         </div>
         <div className='flex ml-10 mt-1'>
           <div className='flex items-center mr-2 ml-[4.6rem]'>
-          <button className='flex justify-center bg-[#FFFFFF1A] items-center w-[5.5rem] h-9 rounded-tl-3xl rounded-bl-3xl hover:bg-[#ffffff35] border-r-2 border-[#ffffff35] '><img src={likes} className='h-6 mx-1'/><p className='text-white font-semibold'>1.6M</p></button>
+          <button className='flex justify-center bg-[#FFFFFF1A] items-center w-[5.5rem] h-9 rounded-tl-3xl rounded-bl-3xl hover:bg-[#ffffff35] border-r-2 border-[#ffffff35] '><img src={likes} className='h-6 mx-1'/><p className='text-white font-semibold'>{formatLikeCount(likeCount)}</p></button>
             <button className='flex justify-center bg-[#FFFFFF1A] items-center w-14 h-9 rounded-tr-3xl rounded-br-3xl hover:bg-[#ffffff35]'><img src={unlike} className='h-6 mx-1' /></button>
             </div>
             <button className='flex mr-2 bg-[#FFFFFF1A] items-center w-[6rem] h-9 rounded-3xl  hover:bg-[#ffffff35]'><img src={share} className='h-6 mx-1 ml-2'/><p className='text-white font-semibold'>Share</p></button>
