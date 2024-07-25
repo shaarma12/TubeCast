@@ -1,7 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-
+import likes from "../Images/likes.png";
+import dots from "../Images/dots.png";
+import unlike from "../Images/unlike.png";
+import share from "../Images/share.png";
+import save from "../Images/save.png";
 const Watch = () => {
   const data = useSelector(store => store.Data);
   const {description,title,channelTitle,publishedAt,thumbnails } = data?.videoData?.snippet;
