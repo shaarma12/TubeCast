@@ -27,7 +27,7 @@ const Watch = () => {
   }
 
   return (
-    <div className='bg-[#212121] ml-40 mb-40'>
+    <div className='bg-[#212121] ml-40 mb-40 overflow-y-scroll no-scrollbar'>
       <iframe
         width="800"
         height="450"
@@ -59,7 +59,7 @@ const Watch = () => {
           <button className='flex justify-center bg-[#FFFFFF1A] items-center w-11 h-9 rounded-full hover:bg-[#ffffff35]'><img src={dots} className='h-6' /></button>
         </div>
       </div>
-      <Description data={description} />
+      <Description data={description} views={viewCount} />
     </div>
   );
 }
