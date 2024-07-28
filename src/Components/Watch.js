@@ -59,7 +59,7 @@ const Watch = () => {
           <button className='flex justify-center bg-[#FFFFFF1A] items-center w-11 h-9 rounded-full hover:bg-[#ffffff35]'><img src={dots} className='h-6' /></button>
         </div>
       </div>
-      <Description data={description} views={viewCount} />
+      <Description data={description} views={viewCount} date={publishedAt} />
     </div>
   );
 }

@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Description = ({ data,views }) => {
-  // Log the data for debugging
-  console.log("Description", data);
-
+const Description = ({ data,views,date }) => {
+  const [toggle, setToggle] = useState(false);
   // Function to format the text by adding line breaks and converting URLs to links
   const formatText = (text) => {
     // Convert URLs into clickable links
@@ -21,11 +19,96 @@ const Description = ({ data,views }) => {
 
     return formattedText;
   };
+  function getTimeDifference(dateString) {
+    // Parse the given date string
+    const givenDate = new Date(dateString);
+
+    // Get the current date
+    const currentDate = new Date();
+
+    // Calculate the difference in milliseconds
+    const diffInMs = currentDate - givenDate;
+
+    // Calculate the difference in days
+    const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+    const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
+    const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
+    const diffInSeconds = Math.floor(diffInMs / (1000));
+    // Determine the time difference in various units
+    const weeksDiff = Math.floor(diffInDays / 7);
+    const monthsDiff = Math.floor(diffInDays / 30);
+    const yearsDiff = Math.floor(diffInDays / 365);
+
+    // Determine the time category
+    let timeDiff;
+    if (diffInMinutes == 0) {
+      if (diffInSeconds == 1) {
+        timeDiff = `${diffInHours} second ago`;
+      }
+      else {
+        timeDiff = `${diffInHours} seconds ago`;
+      }
+    }
+    else if (diffInHours == 0) {
+      if (diffInMinutes == 1) {
+        timeDiff = `${diffInHours} minute ago`;
+      }
+      else {
+        timeDiff = `${diffInHours} minutes ago`;
+      }
+    }
+    else if (diffInDays == 0) {
+      if (diffInHours == 1) {
+        timeDiff = `${diffInHours} hour ago`;
+      }
+      else {
+        timeDiff = `${diffInHours} hours ago`;
+      }
+    }
+    else if (diffInDays < 7) {
+      if (diffInDays == 1) {
+        timeDiff = `${diffInDays} day ago`;
+      }
+      else {
+        timeDiff = `${diffInDays} days ago`;
+      }
+    } else if (diffInDays < 30) {
+      if (weeksDiff == 7) {
+        timeDiff = `${weeksDiff} week ago`;
+      }
+      else {
+        timeDiff = `${weeksDiff} weeks ago`;
+      }
+    } else if (diffInDays < 365) {
+      if (monthsDiff == 30) {
+        timeDiff = `${monthsDiff} month ago`;
+      }
+      else {
+        timeDiff = `${monthsDiff} months ago`;
+      }
+    } else {
+      if (yearsDiff == 365) {
+        timeDiff = `${yearsDiff} year ago`;
+      }
+      else {
+        timeDiff = `${yearsDiff} years ago`;
+      }
+    }
+
+    return timeDiff;
+  }
 
   return (
-    <div className='w-[50rem] bg-[#FFFFFF1A] rounded-xl p-3 mt-4'>
-      <p className='text-white'>{views}</p>
-      <div className='text-white font-medium' dangerouslySetInnerHTML={{ __html: formatText(data) }} />
+    <div className='w-[50rem] bg-[#FFFFFF1A] rounded-xl p-3 mt-4 cursor-pointer' onClick={() => {
+      setToggle(!toggle);
+    }}>
+      <div className='flex text-white font-semibold'>
+        <p className='mr-2'>{views} views</p>
+        <p>{getTimeDifference(date) }</p>
+        </div>
+      {toggle?<div><div className='text-white font-semibold' dangerouslySetInnerHTML={{ __html: formatText(data) }} /><p className='font-semibold text-white mt-8'>Show less</p></div>
+      :<div className='text-white font-semibold' dangerouslySetInnerHTML={{ __html: formatText(data).length > 245? formatText(data).slice(0,244)+"  ...more":formatText(data) }} />
+      }
     </div>
   );
 }
