@@ -97,13 +97,25 @@ const Description = ({ data,views,date,thumbnails,channelTitle }) => {
 
     return timeDiff;
   }
-
+  const viewCount = (view) => {
+    if (view >= 1000000)
+    {
+      return (view/1000000).toFixed(1) + "M";
+    }
+    else if (view >= 1000)
+    {
+      return (view / 1000).toFixed(1) + "K";
+    }
+    else {
+      return view;
+    }
+  }
   return (
     <div className='w-[50rem] bg-[#FFFFFF1A] rounded-xl p-3 mt-4 cursor-pointer' onClick={() => {
       setToggle(!toggle);
     }}>
-      <div className='flex text-white font-semibold'>
-        <p className='mr-2'>{views} views</p>
+      <div className='flex text-white font-bold'>
+        <p className='mr-2'>{viewCount(views)} views</p>
         <p>{getTimeDifference(date) }</p>
         </div>
       {toggle?<div><div className='text-white font-semibold' dangerouslySetInnerHTML={{ __html: formatText(data) }} /><div className='flex mt-5'>
