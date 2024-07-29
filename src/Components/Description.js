@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import DOMPurify from 'dompurify';
 const Description = ({ data,views,date,thumbnails,channelTitle }) => {
   const [toggle, setToggle] = useState(false);
   // Function to format the text by adding line breaks and converting URLs to links
@@ -110,6 +110,8 @@ const Description = ({ data,views,date,thumbnails,channelTitle }) => {
       return view;
     }
   }
+  // sanitized data as we are using dangerouslySetInnerHTML which may lead to XSS attacks.
+  const sanitizedData = DOMPurify.sanitize(formatText(data));
   return (
     <div className='w-[50rem] bg-[#FFFFFF1A] rounded-xl p-3 mt-4 cursor-pointer' onClick={() => {
       setToggle(!toggle);
@@ -118,14 +120,14 @@ const Description = ({ data,views,date,thumbnails,channelTitle }) => {
         <p className='mr-2'>{viewCount(views)} views</p>
         <p>{getTimeDifference(date) }</p>
         </div>
-      {toggle?<div><div className='text-white font-semibold' dangerouslySetInnerHTML={{ __html: formatText(data) }} /><div className='flex mt-5'>
+      {toggle?<div><div className='text-white font-semibold' dangerouslySetInnerHTML={{ __html: sanitizedData }} /><div className='flex mt-5'>
           <img src={thumbnails?.maxres?.url} className='w-12 h-12 rounded-full mr-3' />
           <div className='text-white'>
-            <p className='text-xl font-bold text-white -mt-[0.1rem]'>{channelTitle.length > 17 ? channelTitle.slice(0,12)+"...":channelTitle}</p>
+            <p className='text-xl font-bold text-white -mt-[0.1rem]'>{channelTitle.length > 20 ? channelTitle.slice(0,19)+"...":channelTitle}</p>
             <p className='text-[#AAAAAA] text-sm -mt-[0.15rem]'>54.9M subscribers</p>
           </div>
         </div><p className='font-semibold text-white mt-8'>Show less</p></div>
-      :<div className='text-white font-semibold' dangerouslySetInnerHTML={{ __html: formatText(data).length > 245? formatText(data).slice(0,244)+"  ...more":formatText(data) }} />
+      :<div className='text-white font-semibold' dangerouslySetInnerHTML={{ __html: sanitizedData.length > 245? sanitizedData.slice(0,244)+"  ...more":formatText(data) }} />
       }
     </div>
   );
