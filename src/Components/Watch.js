@@ -15,17 +15,27 @@ const Watch = () => {
   const videoId = searchParams.get("v");
   const videoSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
   const formatLikeCount = (likecount) => {
-    if (likecount >= 1000000) {
-      return Math.floor((likecount / 1000000)) + 'M';
+      if (likecount >= 1000000) {
+        return Math.floor((likecount / 1000000)) + 'M';
+      }
+      else if (likecount >= 1000) {
+        return Math.floor((likecount / 1000)) + 'K';
+      }
+      else {
+        return likecount;
+      }
     }
-    else if (likecount >= 1000) {
-      return Math.floor((likecount / 1000)) + 'K';
+  const fomatCommentcount = (comment) => {
+    if (comment >= 1000000) {
+      return Math.floor((comment / 1000000)).toFixed(2) + 'M';
+    }
+    else if (comment >= 1000) {
+      return ((comment / 1000)).toFixed(2) + 'K';
     }
     else {
-      return likecount;
+      return comment;
     }
   }
-
   return (
     <div className='h-[40rem]'>
       <div className='bg-[#212121] ml-40 mb-40 overflow-y-scroll no-scrollbar h-[40rem]'>
@@ -61,7 +71,7 @@ const Watch = () => {
           </div>
         </div>
         <Description data={description} views={viewCount} date={publishedAt} thumbnails={thumbnails} channelTitle={channelTitle} />
-        <p className='text-white font-bold text-xl mb-10 mt-6'>{ commentCount} Comments</p>
+        <p className='text-white font-bold text-xl mb-10 mt-6'>{fomatCommentcount(commentCount)} Comments</p>
       </div>
     </div>
   );
