@@ -6,9 +6,25 @@ import create from "../Images/create.png"
 import user from "../Images/user.png"
 import {useDispatch} from "react-redux"
 import { toogleState } from "../utils/toggleSlice"
+import { useEffect, useState } from "react"
+import { SUGGESTION_API } from "../constant"
 
 const Header = () => {
+    const [searchQuery, setSearchQuery] = useState();
     const dispatch = useDispatch();
+    useEffect(() => {
+        getSuggestion();
+    }, []);
+    const getSuggestion = async () => {
+        try {
+            const apiData = await fetch(SUGGESTION_API + searchQuery);
+            const jsonData = await apiData.json();
+            console.log("Suggestions", jsonData);
+        }
+        catch(error) {
+            console.log("Getting Error in Fetching Suggestion API:-", error);
+        }
+    }
     return (
         <>
             <div className="py-3 flex items-center justify-between">
@@ -22,7 +38,9 @@ const Header = () => {
                         </div>
                 </div>
                 <div className="flex">
-                    <input type="text" placeholder="Search" className="rounded-tl-full rounded-bl-full text-white bg-[#121212] border-[1px] border-gray-600 md:w-[19rem] xl:w-[33rem] lg:w-[30rem] w-44 md:ml-20  lg:ml-36 xl:h-10 lg:h-10 md:h-8 h-6 placeholder: pl-6 pb-1 xl:text-lg lg:text-lg md:text-base text-xs" />
+                    <input type="text" placeholder="Search" value={searchQuery} className="rounded-tl-full rounded-bl-full text-white bg-[#121212] border-[1px] border-gray-600 md:w-[19rem] xl:w-[33rem] lg:w-[30rem] w-44 md:ml-20  lg:ml-36 xl:h-10 lg:h-10 md:h-8 h-6 placeholder: pl-6 pb-1 xl:text-lg lg:text-lg md:text-base text-xs" onChange={(e)=>{
+                        setSearchQuery(e.target.value);
+                    }}/>
                     <div className="md:w-16 w-5 xl:h-10 lg:h-10 md:h-8 h-6 border-[1px] border-gray-600 rounded-tr-full rounded-br-full bg-[#FFFFFF14] hover:cursor-pointer">
                         <img src={search} alt="search" className="md:mt-[0.35rem] xl:mt-2 lg:mt-2 mt-[0.35rem] md:ml-5 ml-[0.15rem] md:w-5 w-3"/>
                     </div>
@@ -35,10 +53,12 @@ const Header = () => {
             </div>
         <div className="bg-[#212121] z-50 shadow-lg border-[1px] border-[#393939] absolute left-[30rem] rounded-xl w-[33rem] -mt-2">
             <ul className="py-4 px-3">
-                <li className="px-2 py-1 bg-[#212121] text-white font-bold">Iphone 11</li>
-                <li className="px-2 py-1 bg-[#212121] text-white">Iphone 11</li>
-                <li className="px-2 py-1 bg-[#212121] text-white">Iphone 11</li>
-                <li className="px-2 py-1 bg-[#212121] text-white">Iphone 11</li>
+                <li className="px-2 py-1 bg-[#474747] text-white font-bold rounded-xl mt-1">Iphone 11</li>
+                <li className="px-2 py-1 bg-[#474747] text-white font-bold rounded-xl mt-1">Iphone 10</li>
+                <li className="px-2 py-1 bg-[#474747] text-white font-bold rounded-xl mt-1">Iphone 12</li>
+                <li className="px-2 py-1 bg-[#474747] text-white font-bold rounded-xl mt-1">Iphone 9</li>
+                <li className="px-2 py-1 bg-[#474747] text-white font-bold rounded-xl mt-1">Iphone 8</li>
+                <li className="px-2 py-1 bg-[#474747] text-white font-bold rounded-xl mt-1">Iphone XE</li>
                 </ul> 
                 </div>
         </>
