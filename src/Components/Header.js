@@ -46,17 +46,29 @@ const Header = () => {
                         </div>
                 </div>
                 <div className="flex">
-                    <img src={ search} className="w-4 absolute left-96"/>
-                    <input type="text" placeholder="Search" value={searchQuery} className="rounded-tl-full rounded-bl-full text-white bg-[#121212] border-[1px] border-gray-600 md:w-[19rem] xl:w-[33rem] lg:w-[30rem] w-44 md:ml-20  lg:ml-36 xl:h-10 lg:h-10 md:h-8 h-6 placeholder: pl-6 pb-1 xl:text-lg lg:text-lg md:text-base text-xs" onFocus={() => {
+                    {inputFocus && <div className="flex justify-center w-6 absolute right-[65rem] h-10  bg-[#121212] border-[1px] border-gray-600 border-r-0 rounded-tl-full rounded-bl-full">
+                        <img src={search} className="w-4 ml-4" />
+                    </div>}
+                    {inputFocus&&<input type="text" placeholder="Search" value={searchQuery} className="outline-none border-l-0 text-white bg-[#121212] border-[1px] border-gray-600 md:w-[19rem] xl:w-[33rem] lg:w-[30rem] w-44 md:ml-20  lg:ml-36 xl:h-10 lg:h-10 md:h-8 h-6 placeholder: pl-6 pb-1 xl:text-lg lg:text-lg md:text-base text-xs" onFocus={() => {
                         setInputFocus(true);
                     }}
                         onBlur={() => {
                             setInputFocus(false);
                         }
-                    }
-                    onChange={(e)=>{
-                        setSearchQuery(e.target.value);
-                    }}/>
+                        }
+                        onChange={(e) => {
+                            setSearchQuery(e.target.value);
+                        }} />}
+                    {!inputFocus&&<input type="text" placeholder="Search" value={searchQuery} className="rounded-tl-full rounded-bl-full text-white bg-[#121212] border-[1px] border-gray-600 md:w-[19rem] xl:w-[33rem] lg:w-[30rem] w-44 md:ml-20  lg:ml-36 xl:h-10 lg:h-10 md:h-8 h-6 placeholder: pl-6 pb-1 xl:text-lg lg:text-lg md:text-base text-xs" onFocus={() => {
+                        setInputFocus(true);
+                    }}
+                        onBlur={() => {
+                            setInputFocus(false);
+                        }
+                        }
+                        onChange={(e) => {
+                            setSearchQuery(e.target.value);
+                        }} />}
                     <div className="md:w-16 w-5 xl:h-10 lg:h-10 md:h-8 h-6 border-[1px] border-gray-600 rounded-tr-full rounded-br-full bg-[#FFFFFF14] hover:cursor-pointer">
                         <img src={search} alt="search" className="md:mt-[0.35rem] xl:mt-2 lg:mt-2 mt-[0.35rem] md:ml-5 ml-[0.15rem] md:w-5 w-3"/>
                     </div>
@@ -67,10 +79,10 @@ const Header = () => {
                     <img src={user} alt="user" className="xl:w-[1.85rem] lg:w-[1.85rem] md:w-5 w-4 md:mr-6 mr-2 hover:cursor-pointer"/>
                 </div>
             </div>
-            {inputFocus&&<div className="bg-[#212121] z-50 shadow-lg border-[1px] border-[#393939] absolute left-[30rem] rounded-xl w-[33rem] -mt-2">
+            {inputFocus&&<div className="bg-[#212121] z-50 shadow-lg border-[1px] border-[#393939] absolute left-[28.7rem] rounded-xl  w-[34.1rem] -mt-2">
                 <ul className="py-4 px-3">
                     {searchData.map((i, index) => {
-                        return <li key={index} className="px-2 py-1 bg-[#474747] text-white font-bold rounded-xl mt-1">{i}</li>
+                        return <li key={index} className="px-2 py-1 hover:bg-[#474747] text-white font-bold mt-1">{i}</li>
                     })}
                 </ul>
             </div>}
