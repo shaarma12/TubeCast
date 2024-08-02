@@ -91,7 +91,8 @@ const Header = () => {
                         return <div className="flex hover:bg-[#474747] w-[34rem] hover:-ml-3 hover:pl-[0.85rem]" onClick={() => {
                             setSearchQuery(i);
                             setInputFocus(false);
-                            console.log("SearchQuery:- ",i);
+                            console.log("SearchQuery:- ", i);
+                            window.location.href = `/results/?search_query=${i}`;
                         }}><img src={search} alt="search" className="w-4 mt-2 ml-[0.15rem]" /><li key={index} className="px-2 py-1 text-white font-bold mt-1 ml-[0.35rem]">{i}</li></div>
                     })}
                 </ul>
