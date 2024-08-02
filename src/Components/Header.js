@@ -88,7 +88,11 @@ const Header = () => {
             {inputFocus && <div className="bg-[#212121] z-50 shadow-lg border-[1px] border-[#393939] absolute left-[28.7rem] rounded-xl  w-[34.1rem] -mt-2">
                 <ul className="py-4 px-3">
                     {searchData.map((i, index) => {
-                        return <div className="flex hover:bg-[#474747] w-[34rem] hover:-ml-3 hover:pl-[0.85rem]"><img src={search} alt="search" className="w-4 mt-2 ml-[0.15rem]" /><li key={index} className="px-2 py-1 text-white font-bold mt-1 ml-[0.35rem]">{i}</li></div>
+                        return <div className="flex hover:bg-[#474747] w-[34rem] hover:-ml-3 hover:pl-[0.85rem]" onClick={() => {
+                            setSearchQuery(i);
+                            setInputFocus(false);
+                            console.log("SearchQuery:- ",i);
+                        }}><img src={search} alt="search" className="w-4 mt-2 ml-[0.15rem]" /><li key={index} className="px-2 py-1 text-white font-bold mt-1 ml-[0.35rem]">{i}</li></div>
                     })}
                 </ul>
             </div>}
