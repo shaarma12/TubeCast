@@ -44,16 +44,15 @@ const Watch = () => {
           height="450"
           src={videoSrc}
           title="YouTube video player"
-          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
           className='rounded-2xl mt-4 mb-7'
         ></iframe>
         <p className='text-white text-xl font-semibold w-[50rem] -mt-4'>{title}</p>
         <div className='flex mt-2'>
           <div className='flex'>
-            <img src={thumbnails?.maxres?.url} className='w-10 h-10 rounded-full mr-3' />
+            <img src={thumbnails?.maxres?.url} alt="url" className='w-10 h-10 rounded-full mr-3' />
             <div className='text-white'>
               <p className='text-md font-medium text-white -mt-[0.1rem]'>{channelTitle.length > 17 ? channelTitle.slice(0, 12) + "..." : channelTitle}</p>
               <p className='text-[#AAAAAA] text-sm -mt-[0.15rem]'>54.9M subscribers</p>
@@ -62,12 +61,12 @@ const Watch = () => {
           </div>
           <div className='flex ml-10 mt-1'>
             <div className='flex items-center mr-2 ml-[4.6rem]'>
-              <button className='flex justify-center bg-[#FFFFFF1A] items-center w-[5.5rem] h-9 rounded-tl-3xl rounded-bl-3xl hover:bg-[#ffffff35] border-r-2 border-[#ffffff35] '><img src={likes} className='h-6 mx-1' /><p className='text-white font-semibold'>{formatLikeCount(likeCount)}</p></button>
-              <button className='flex justify-center bg-[#FFFFFF1A] items-center w-14 h-9 rounded-tr-3xl rounded-br-3xl hover:bg-[#ffffff35]'><img src={unlike} className='h-6 mx-1' /></button>
+              <button className='flex justify-center bg-[#FFFFFF1A] items-center w-[5.5rem] h-9 rounded-tl-3xl rounded-bl-3xl hover:bg-[#ffffff35] border-r-2 border-[#ffffff35] '><img src={likes} alt='like' className='h-6 mx-1' /><p className='text-white font-semibold'>{formatLikeCount(likeCount)}</p></button>
+              <button className='flex justify-center bg-[#FFFFFF1A] items-center w-14 h-9 rounded-tr-3xl rounded-br-3xl hover:bg-[#ffffff35]'><img src={unlike} className='h-6 mx-1' alt='unlike' /></button>
             </div>
-            <button className='flex mr-2 bg-[#FFFFFF1A] items-center w-[6rem] h-9 rounded-3xl  hover:bg-[#ffffff35]'><img src={share} className='h-6 mx-1 ml-2' /><p className='text-white font-semibold'>Share</p></button>
-            <button className='flex mr-2 bg-[#FFFFFF1A] items-center w-[5.5rem] h-9 rounded-3xl  hover:bg-[#ffffff35]'><img src={save} className='h-6 mx-1 ml-3' /><p className='text-white font-semibold'>Save</p></button>
-            <button className='flex justify-center bg-[#FFFFFF1A] items-center w-11 h-9 rounded-full hover:bg-[#ffffff35]'><img src={dots} className='h-6' /></button>
+            <button className='flex mr-2 bg-[#FFFFFF1A] items-center w-[6rem] h-9 rounded-3xl  hover:bg-[#ffffff35]'><img src={share} alt='share' className='h-6 mx-1 ml-2' /><p className='text-white font-semibold'>Share</p></button>
+            <button className='flex mr-2 bg-[#FFFFFF1A] items-center w-[5.5rem] h-9 rounded-3xl  hover:bg-[#ffffff35]'><img src={save} alt='save' className='h-6 mx-1 ml-3' /><p className='text-white font-semibold'>Save</p></button>
+            <button className='flex justify-center bg-[#FFFFFF1A] items-center w-11 h-9 rounded-full hover:bg-[#ffffff35]'><img src={dots} alt='dots' className='h-6' /></button>
           </div>
         </div>
         <Description data={description} views={viewCount} date={publishedAt} thumbnails={thumbnails} channelTitle={channelTitle} />

@@ -34,7 +34,6 @@ const Header = () => {
             });
             const jsonData = await apiData.json();
             setSearchData(jsonData[1]);
-            console.log("Suggestions", jsonData);
         }
         catch (error) {
             console.log("Getting Error in Fetching Suggestion API:-", error);
@@ -54,7 +53,7 @@ const Header = () => {
                 </div>
                 <div className="flex">
                     {inputFocus && <div className="flex justify-center w-6 absolute right-[65rem] h-10 bg-[#121212] border-[1px] border-gray-600 border-r-0 rounded-tl-full rounded-bl-full">
-                        <img src={search} className="w-4 ml-6" />
+                        <img src={search} alt="search" className="w-4 ml-6" />
                     </div>}
                     {inputFocus && <input type="text" placeholder="Search" value={searchQuery} className="outline-none border-l-0 text-white bg-[#121212] border-[1px] border-gray-600 md:w-[19rem] xl:w-[33rem] lg:w-[30rem] w-44 md:ml-20  lg:ml-36 xl:h-10 lg:h-10 md:h-8 h-6 placeholder: pl-7 pb-1 xl:text-lg lg:text-lg md:text-base text-xs" onFocus={() => {
                         setInputFocus(true);
@@ -89,7 +88,7 @@ const Header = () => {
             {inputFocus && <div className="bg-[#212121] z-50 shadow-lg border-[1px] border-[#393939] absolute left-[28.7rem] rounded-xl  w-[34.1rem] -mt-2">
                 <ul className="py-4 px-3">
                     {searchData.map((i, index) => {
-                        return <div className="flex hover:bg-[#474747] w-[34rem] hover:-ml-3 hover:pl-[0.85rem]"><img src={search} className="w-4 mt-2 ml-[0.15rem]" /><li key={index} className="px-2 py-1 text-white font-bold mt-1 ml-[0.35rem]">{i}</li></div>
+                        return <div className="flex hover:bg-[#474747] w-[34rem] hover:-ml-3 hover:pl-[0.85rem]"><img src={search} alt="search" className="w-4 mt-2 ml-[0.15rem]" /><li key={index} className="px-2 py-1 text-white font-bold mt-1 ml-[0.35rem]">{i}</li></div>
                     })}
                 </ul>
             </div>}

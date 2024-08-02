@@ -16,16 +16,15 @@ const VideoContainer = () => {
   useEffect(() => {
     fetchData();
   }, [])
-
   return (
     <div>
       {toggle?<div className='ml-[4.2rem] mt-8 flex flex-wrap gap-3 h-[35rem] overflow-y-scroll no-scrollbar'>
         {youtubeData?.items.map((i) => {
-          return <Video data={i} />
+          return <Video key={ i?.id} data={i} />
         })}
       </div>:<div className='ml-[4.2rem] mt-8 flex flex-wrap gap-5'>
         {youtubeData?.items.map((i) => {
-          return <Video data={i} />
+          return <Video key={ i?.id} data={i} />
         })}
       </div>}
     </div>

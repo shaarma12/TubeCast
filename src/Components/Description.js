@@ -41,24 +41,24 @@ const Description = ({ data,views,date,thumbnails,channelTitle }) => {
 
     // Determine the time category
     let timeDiff;
-    if (diffInMinutes == 0) {
-      if (diffInSeconds == 1) {
+    if (diffInMinutes === 0) {
+      if (diffInSeconds === 1) {
         timeDiff = `${diffInHours} second ago`;
       }
       else {
         timeDiff = `${diffInHours} seconds ago`;
       }
     }
-    else if (diffInHours == 0) {
-      if (diffInMinutes == 1) {
+    else if (diffInHours === 0) {
+      if (diffInMinutes === 1) {
         timeDiff = `${diffInHours} minute ago`;
       }
       else {
         timeDiff = `${diffInHours} minutes ago`;
       }
     }
-    else if (diffInDays == 0) {
-      if (diffInHours == 1) {
+    else if (diffInDays === 0) {
+      if (diffInHours === 1) {
         timeDiff = `${diffInHours} hour ago`;
       }
       else {
@@ -66,28 +66,28 @@ const Description = ({ data,views,date,thumbnails,channelTitle }) => {
       }
     }
     else if (diffInDays < 7) {
-      if (diffInDays == 1) {
+      if (diffInDays === 1) {
         timeDiff = `${diffInDays} day ago`;
       }
       else {
         timeDiff = `${diffInDays} days ago`;
       }
     } else if (diffInDays < 30) {
-      if (weeksDiff == 7) {
+      if (weeksDiff === 7) {
         timeDiff = `${weeksDiff} week ago`;
       }
       else {
         timeDiff = `${weeksDiff} weeks ago`;
       }
     } else if (diffInDays < 365) {
-      if (monthsDiff == 30) {
+      if (monthsDiff === 30) {
         timeDiff = `${monthsDiff} month ago`;
       }
       else {
         timeDiff = `${monthsDiff} months ago`;
       }
     } else {
-      if (yearsDiff == 365) {
+      if (yearsDiff === 365) {
         timeDiff = `${yearsDiff} year ago`;
       }
       else {
@@ -121,7 +121,7 @@ const Description = ({ data,views,date,thumbnails,channelTitle }) => {
         <p>{getTimeDifference(date) }</p>
         </div>
       {toggle?<div><div className='text-white font-semibold' dangerouslySetInnerHTML={{ __html: sanitizedData }} /><div className='flex mt-5'>
-          <img src={thumbnails?.maxres?.url} className='w-12 h-12 rounded-full mr-3' />
+          <img src={thumbnails?.maxres?.url} alt='url' className='w-12 h-12 rounded-full mr-3' />
           <div className='text-white'>
             <p className='text-xl font-bold text-white -mt-[0.1rem]'>{channelTitle.length > 20 ? channelTitle.slice(0,19)+"...":channelTitle}</p>
             <p className='text-[#AAAAAA] text-sm -mt-[0.15rem]'>54.9M subscribers</p>

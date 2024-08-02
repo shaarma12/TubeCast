@@ -7,7 +7,7 @@ const LargeSidebar = () => {
     <div className='h-[40rem] overflow-y-scroll no-scrollbar'>
     <div className="mt-4">
       {SIDEBARS.map((i) => {
-        return <SidebarData data={i} />
+        return <SidebarData key={i?.id} data={i} />
       })}
       <div className="border-t-[0.3px] border-gray-500 mt-3 ml-4">
         <div className="flex items-center px-2">
@@ -16,7 +16,7 @@ const LargeSidebar = () => {
         </div>
         <div className="-ml-4">
           {YOU.map((i) => {
-            return <SidebarData data={i} />
+            return <SidebarData key={i?.id} data={i} />
           })}
         </div>
       </div>
@@ -24,7 +24,7 @@ const LargeSidebar = () => {
         <p className="text-white font-medium text-lg mt-4 ml-2 mr-2 mb-2 px-2">Explore </p>
         <div className="-ml-4">
           {EXPLORE.map((i) => {
-            return <SidebarData data={i} />
+            return <SidebarData key={i?.id} data={i} />
           })}
         </div>
       </div>
@@ -32,14 +32,14 @@ const LargeSidebar = () => {
         <p className="text-white font-medium text-lg mt-4 ml-1 mr-2 mb-2 px-2">More from TubeCast </p>
         <div className="-ml-4">
           {MORE.map((i) => {
-            return <SidebarData data={i} />
+            return <SidebarData key={i?.id} data={i} />
           })}
         </div>
       </div>
       <div className="border-t-[0.3px] border-gray-500 mt-3 ml-4">
         <div className="-ml-4 mt-3">
           {GENERAL.map((i) => {
-            return <SidebarData data={i} />
+            return <SidebarData key={i?.id} data={i} />
           })}
         </div>
         </div>

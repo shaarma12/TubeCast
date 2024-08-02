@@ -31,98 +31,126 @@ export const YOUTUBE_API = "https://youtube.googleapis.com/youtube/v3/videos?par
 export const SUGGESTION_API = `https://proxy.cors.sh/http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=`;
 export const TAGS = ["All", "Live", "Sports", "Software", "Reaction", "News", "Cricket", "Movies", "Thriller", "Indian", "Mixes", "Album", "Recently", "Football", "Shoes", "Clothes", "Fashion", "Taj", "Phones", "Shirts", "England", "TV", "Fridge"];
 export const SIDEBARS = [{
+    id:1,
     icon: Home,
     name: "Home",
     link:"/"
 }, {
+    id:2,
     icon: shorts,
     name: "Shorts"
-}, {
+    }, {
+    id:3,
     icon: subscription,
     name: "Subscription"
 }];
 
 export const YOU = [{
+    id:1,
     icon: men,
     name: "Your channel"
 }, {
+    id: 2,
     icon: history,
     name: "History"
-}, {
+    }, {
+    id:3,
     icon: playlist,
     name: "Playlists"
 },
-{
+    {
+    id:4,
     icon: yvideo,
     name: "Your videos"
 },
-{
+    {
+    id:5,
     icon: watch,
     name: "Watch later"
 },
-{
+    {
+    id:6,
     icon: liked,
     name: "Liked videos"
 }];
 export const EXPLORE = [{
+    id:1,
     icon: trending,
     name: "Trending"
 }, {
+    id:2,
     icon: bag,
     name: "Shopping"
-}, {
+    }, {
+    id:3,
     icon: music,
     name: "Music"
-}, {
+    }, {
+    id:4,
     icon: movies,
     name: "Movies"
-}, {
+    }, {
+    id:5,
     icon: live,
     name: "Live"
-}, {
+    }, {
+    id:6,
     icon: game,
     name: "Gaming"
-}, {
+    }, {
+    id:7,
     icon: nws,
     name: "News"
-}, {
+    }, {
+    id: 8,
     icon: sport,
     name: "Sports"
-}, {
+    }, {
+    id: 9,
     icon: courses,
     name: "Courses"
-}, {
+    }, {
+    id:10,
     icon: fashion,
     name: "Fashion"
-}, {
+    }, {
+    id:11,
     icon: podcast,
     name: "Podcasts"
     }];
 
 export const MORE = [{
+    id:1,
     icon: logo,
     name: "TubeCast Premium"
 }, {
+    id:2,
     icon: studio,
     name: "TubeCast Studio"
-}, {
+    }, {
+    id:3,
     icon: ymusic,
     name: "TubeCast Music"
-}, {
+    }, {
+    id:4,
     icon: kids,
     name: "TubeCast kids"
     },];
 
 export const GENERAL = [{
+    id: 1,
     icon: setting,
     name: "Settings"
 }, {
+    id:2,
     icon: flag,
     name: "Report history"
-}, {
+    }, {
+    id:3,
     icon: helps,
     name: "Help"
-}, {
+    }, {
+    id:4,
     icon: feedback,
     name: "Send feedback"
 },];
