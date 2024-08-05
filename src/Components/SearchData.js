@@ -13,14 +13,15 @@ const SearchData = () => {
     const getSearchData = async() => {
         const data = await fetch(SUGGESTION_DATA_API + params);
         const dataJson = await data.json();
-        setSearchData(dataJson?.items);
-        console.log("DataJson", searchData);
+      setSearchData(dataJson?.items);
+      console.log("DataJson", searchData);
+      console.log("params", params);
     }
   return (
     <div>
-          {searchData.map((i) => {
-          return <SearchDataCard key={i?.id?.videoId} data={i}/>
-      })}
+      {searchData.map((i) => {
+        return <SearchDataCard data={i} />
+          })}
     </div>
   )
 }
