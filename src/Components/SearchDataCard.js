@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { apiResponse } from '../utils/dataSlice';
+import { useDispatch } from 'react-redux';
 
-const SearchDataCard = ({data}) => {
+const SearchDataCard = ({ data }) => {
+  const dispatch = useDispatch();
     // const formatViewCount = (viewcount) => {
     //     if (viewcount >= 1000000) {
     //       return (viewcount / 1000000).toFixed(1) + 'M';
@@ -93,7 +96,9 @@ const SearchDataCard = ({data}) => {
     //   }
   return (
     <div>
-      <Link to={`/watch?v=${data?.id?.videoId}`}><div className='w-[24.2rem] h-[21rem] mb-6 hover:cursor-pointer'>
+      <Link to={`/watch?v=${data?.id?.videoId}`}><div className='w-[24.2rem] h-[21rem] mb-6 hover:cursor-pointer' onClick={() => {
+        dispatch(apiResponse(data));
+      }}>
         <img src={data?.snippet?.thumbnails?.high?.url ? data?.snippet?.thumbnails?.high?.url : data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-lg w-[55rem] h-56' />
         <div className='flex mt-3'>
           <img src={data?.snippet?.thumbnails?.high?.url ? data?.snippet?.thumbnails?.high?.url : data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-full w-10 h-10' />

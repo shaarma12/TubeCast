@@ -117,7 +117,7 @@ const Description = ({ data,views,date,thumbnails,channelTitle }) => {
       setToggle(!toggle);
     }}>
       <div className='flex text-white font-bold'>
-        <p className='mr-2'>{viewCount(views)} views</p>
+        {views&&<p className='mr-2'>{viewCount(views)} views</p>}
         <p>{getTimeDifference(date) }</p>
         </div>
       {toggle?<div><div className='text-white font-semibold' dangerouslySetInnerHTML={{ __html: sanitizedData }} /><div className='flex mt-5'>
