@@ -18,7 +18,7 @@ const SearchData = () => {
       console.log("params", params);
     }
   return (
-    <div>
+    <div className='h-[37rem] overflow-y-scroll no-scrollbar'>
       {searchData.map((i) => {
         return <SearchDataCard data={i} />
           })}
