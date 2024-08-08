@@ -2,9 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { apiResponse } from '../utils/dataSlice';
 import { useDispatch } from 'react-redux';
+import useVideoId from '../utils/useVideoId';
 
-const SearchDataCard = ({ data }) => {
+const SearchDataCard = ({ value }) => {
   const dispatch = useDispatch();
+  // custom hook for getting Data through videoID
+  const { data } = useVideoId(value?.id?.videoId);
+  console.log("Data", data);
     // const formatViewCount = (viewcount) => {
     //     if (viewcount >= 1000000) {
     //       return (viewcount / 1000000).toFixed(1) + 'M';
@@ -96,13 +100,13 @@ const SearchDataCard = ({ data }) => {
     //   }
   return (
     <div>
-      <Link to={`/watch?v=${data?.id?.videoId}`}><div className='flex w-[75.2rem] -mb-12 mt-4 h-[21rem] hover:cursor-pointer ml-16' onClick={() => {
+      <Link to={`/watch?v=${data?.id}`}><div className='flex w-[75.2rem] -mb-12 mt-4 h-[21rem] hover:cursor-pointer ml-16' onClick={() => {
         dispatch(apiResponse(data));
       }}>
         <img src={data?.snippet?.thumbnails?.high?.url ? data?.snippet?.thumbnails?.high?.url : data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-lg w-[30rem] h-72' />
         <div className='mt-3'>
           <div className='ml-3'>
-            <p className='text-white w-full font-semibold text-lg'>{(data?.snippet?.title).length > 68 ? data?.snippet?.title.substr(0, 67) + "..." : data?.snippet?.title}</p>
+            <p className='text-white w-full font-semibold text-lg'>{(data?.snippet?.channelTitle).length > 68 ? data?.snippet?.channelTitle.substr(0, 67) + "..." : data?.snippet?.channelTitle}</p>
             <div className='flex mt-2'>
           <img src={data?.snippet?.thumbnails?.high?.url ? data?.snippet?.thumbnails?.high?.url : data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-full w-8 h-8' />
               <p className='text-[#AAAAAA] font-semibold mt-1 ml-1'>{data?.snippet?.channelTitle.length > 32 ? data?.snippet?.channelTitle.substr(0, 32) : data?.snippet?.channelTitle}</p>
