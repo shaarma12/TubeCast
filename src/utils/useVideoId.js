@@ -3,15 +3,15 @@ import { VIDEOID_API } from '../constant'
 
 
 const useVideoId = (videoID) => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({});
     const videoData = async() => {
         const Data = await fetch(VIDEOID_API + videoID);
         const DataJSon = await Data.json();
-        setData(DataJSon);
+        setData(DataJSon?.items[0]);
     } 
     useEffect(() => {
         videoData();
-    }, [videoID]);
+    }, []);
     return { data };
 }
 
