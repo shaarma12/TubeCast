@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { apiResponse } from '../utils/dataSlice';
 import { useDispatch } from 'react-redux';
 import useVideoId from '../utils/useVideoId';
-
+import verify from "../Images/verify.png";
 const SearchDataCard = ({ value }) => {
   const dispatch = useDispatch();
   // custom hook for getting Data through videoID
@@ -100,7 +100,7 @@ const SearchDataCard = ({ value }) => {
       }
   return (
     <div>
-      <Link to={`/watch?v=${data?.id}`}><div className='flex w-[75.2rem] -mb-12 mt-4 h-[21rem] hover:cursor-pointer ml-16' onClick={() => {
+      <Link to={`/watch?v=${data?.id}`}><div className='flex w-[72.2rem] -mb-12 mt-4 h-[21rem] hover:cursor-pointer ml-16' onClick={() => {
         dispatch(apiResponse(data));
       }}>
         <img src={data?.snippet?.thumbnails?.maxres?.url ? data?.snippet?.thumbnails?.maxres?.url : data?.snippet?.thumbnails?.high?.url} alt='videoImage' className='rounded-lg w-[30rem] h-72' />
@@ -114,10 +114,11 @@ const SearchDataCard = ({ value }) => {
             </div>
             <div className='flex mt-3'>
           <img src={data?.snippet?.thumbnails?.maxres?.url ? data?.snippet?.thumbnails?.maxres?.url : data?.snippet?.thumbnails?.high?.url} alt='videoImage' className='rounded-full w-8 h-8' />
-              <p className='text-[#AAAAAA] font-semibold mt-1 ml-2'>{data?.snippet?.channelTitle.length > 32 ? data?.snippet?.channelTitle.substr(0, 32) : data?.snippet?.channelTitle}</p>
+              <p className='text-[#AAAAAA] font-semibold mt-1 ml-2 mr-1'>{data?.snippet?.channelTitle.length > 32 ? data?.snippet?.channelTitle.substr(0, 32) : data?.snippet?.channelTitle}</p>
+              {data?.contentDetails?.licensedContent&&<img src={verify} alt="verified" className='w-4 h-4 mt-2' />}
               </div>
+          <p className='text-[#AAAAAA] mt-3 text-sm'>{ data?.snippet?.description.substr(0,99)+"..."}</p>
           </div>
-          <p className='text-white '>{ data?.snippet?.description.substr(0,32)}</p>
         </div>
       </div></Link>
     </div>
