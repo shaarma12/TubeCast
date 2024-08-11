@@ -37,8 +37,8 @@ const Watch = () => {
     }
   }
   return (
-    <div className='h-[40rem]'>
-      <div className='bg-[#212121] ml-40 mb-40 overflow-y-scroll no-scrollbar h-[40rem]'>
+    <div className='h-[38rem]'>
+      <div className='bg-[#212121] ml-40 mb-40 overflow-y-scroll no-scrollbar h-[38rem]'>
         <iframe
           width="800"
           height="450"
