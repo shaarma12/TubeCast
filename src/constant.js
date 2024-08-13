@@ -32,6 +32,7 @@ export const SUGGESTION_DATA_API = `https://www.googleapis.com/youtube/v3/search
 export const SUGGESTION_API = `https://proxy.cors.sh/http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=`;
 export const VIDEOID_API = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key=${API_KEY}&id=`;
 export const SUBSCRIBER_API = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&key=${API_KEY}&id=`;
+export const CHANNELDP_API = `https://www.googleapis.com/youtube/v3/channels?part=snippet&i&key=${API_KEY}&fields=items%2Fsnippet%2Fthumbnails&id=`;
 export const TAGS = ["All", "Live", "Sports", "Software", "Reaction", "News", "Cricket", "Movies", "Thriller", "Indian", "Mixes", "Album", "Recently", "Football", "Shoes", "Clothes", "Fashion", "Taj", "Phones", "Shirts", "England", "TV", "Fridge"];
 export const SIDEBARS = [{
     id:1,

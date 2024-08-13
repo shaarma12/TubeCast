@@ -4,11 +4,13 @@ import { apiResponse } from '../utils/dataSlice';
 import { useDispatch } from 'react-redux';
 import useVideoId from '../utils/useVideoId';
 import verify from "../Images/verify.png";
+import useChannelDP from '../utils/useChannelDP';
 const SearchDataCard = ({ value }) => {
   const dispatch = useDispatch();
   // custom hook for getting Data through videoID
   const { data } = useVideoId(value?.id?.videoId);
-  console.log("Data", data);
+  const { dp } = useChannelDP(data?.snippet?.channelId);
+  console.log("dp", dp);
     const formatViewCount = (viewcount) => {
         if (viewcount >= 1000000) {
           return (viewcount / 1000000).toFixed(1) + 'M';
@@ -113,7 +115,7 @@ const SearchDataCard = ({ value }) => {
               <p>{getTimeDifference(data?.snippet?.publishedAt)}</p>
             </div>
             <div className='flex mt-3'>
-          <img src={data?.snippet?.thumbnails?.maxres?.url ? data?.snippet?.thumbnails?.maxres?.url : data?.snippet?.thumbnails?.high?.url} alt='videoImage' className='rounded-full w-8 h-8' />
+          <img src={dp} alt='videoImage' className='rounded-full w-8 h-8' />
               <p className='text-[#AAAAAA] font-semibold mt-1 ml-2 mr-1'>{data?.snippet?.channelTitle.length > 32 ? data?.snippet?.channelTitle.substr(0, 32) : data?.snippet?.channelTitle}</p>
               {data?.contentDetails?.licensedContent&&<img src={verify} alt="verified" className='w-4 h-4 mt-2' />}
               </div>

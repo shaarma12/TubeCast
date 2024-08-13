@@ -8,6 +8,7 @@ import share from "../Images/share.png";
 import save from "../Images/save.png";
 import Description from './Description';
 import useSubscriber from '../utils/useSubscriber';
+import useChannelDP from '../utils/useChannelDP';
 const Watch = () => {
   const data = useSelector(store => store.Data);
   const { description, title, channelTitle, publishedAt, thumbnails,channelId } = data?.videoData?.snippet;
@@ -16,6 +17,7 @@ const Watch = () => {
   const videoId = searchParams.get("v");
   const videoSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
   const { subscribe } = useSubscriber(channelId);
+  const { dp } = useChannelDP(channelId);
   const formatLikeCount = (likecount) => {
       if (likecount >= 1000000) {
         return Math.floor((likecount / 1000000)) + 'M';
@@ -54,7 +56,7 @@ const Watch = () => {
         <p className='text-white text-xl font-semibold w-[50rem] -mt-4'>{title}</p>
         <div className='flex mt-2'>
           <div className='flex'>
-            <img src={thumbnails?.maxres?.url?thumbnails?.maxres?.url:thumbnails?.high?.url} alt="url" className='w-10 h-10 rounded-full mr-3' />
+            <img src={dp} alt="url" className='w-10 h-10 rounded-full mr-3' />
             <div className='text-white'>
               <p className='text-md font-medium text-white -mt-[0.1rem]'>{channelTitle.length > 17 ? channelTitle.slice(0, 12) + "..." : channelTitle}</p>
               <p className='text-[#AAAAAA] text-sm -mt-[0.15rem]'>{fomatCommentcount(subscribe?.items[0]?.statistics?.subscriberCount) } subscribers</p>

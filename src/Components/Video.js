@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import { toogleBars, toogleState, toogleTag } from '../utils/toggleSlice';
 import { apiResponse } from '../utils/dataSlice';
 import verify from "../Images/verify.png";
+import useChannelDP from '../utils/useChannelDP';
 const Video = ({ data }) => {
   const dispatch = useDispatch();
   const toggle = useSelector((store) => store.Toggle.flag);
+  const { dp } = useChannelDP(data?.snippet?.channelId);
   const formatViewCount = (viewcount) => {
     if (viewcount >= 1000000) {
       return (viewcount / 1000000).toFixed(1) + 'M';
@@ -107,7 +109,7 @@ const Video = ({ data }) => {
       {toggle ? <Link to={`/watch?v=${data?.id}`}><div className='w-[24.2rem] h-[21rem] mb-6 hover:cursor-pointer'>
         <img src={data?.snippet?.thumbnails?.maxres?.url ? data?.snippet?.thumbnails?.maxres?.url : data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-lg w-[55rem] h-56' />
         <div className='flex mt-3'>
-          <img src={data?.snippet?.thumbnails?.maxres?.url ? data?.snippet?.thumbnails?.maxres?.url : data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-full w-10 h-10' />
+          <img src={dp} alt='videoImage' className='rounded-full w-10 h-10' />
           <div className='ml-3'>
             <p className='text-white w-[20rem] font-semibold text-lg'>{(data?.snippet?.localized?.title).length > 55 ? data?.snippet?.localized?.title.substr(0, 55) + "..." : data?.snippet?.localized?.title}</p>
             <div className='flex'>
@@ -124,7 +126,7 @@ const Video = ({ data }) => {
       </div></Link> : <Link to={`/watch?v=${data?.id}`}><div className='w-[21rem] h-[21rem] hover:cursor-pointer'>
         <img src={data?.snippet?.thumbnails?.maxres?.url ? data?.snippet?.thumbnails?.maxres?.url : data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-lg w-[55rem] h-48' />
         <div className='flex mt-3'>
-          <img src={data?.snippet?.thumbnails?.maxres?.url ? data?.snippet?.thumbnails?.maxres?.url : data?.snippet?.thumbnails?.medium?.url} alt='videoImage' className='rounded-full w-10 h-10' />
+          <img src={dp} alt='videoImage' className='rounded-full w-10 h-10' />
           <div className='ml-3'>
             <p className='text-white w-[17.5rem] font-semibold text-lg'>{(data?.snippet?.localized?.title).length > 55 ? data?.snippet?.localized?.title.substr(0, 55) + "..." : data?.snippet?.localized?.title}</p>
             <div className='flex'>
