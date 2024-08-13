@@ -7,13 +7,15 @@ import unlike from "../Images/unlike.png";
 import share from "../Images/share.png";
 import save from "../Images/save.png";
 import Description from './Description';
+import useSubscriber from '../utils/useSubscriber';
 const Watch = () => {
   const data = useSelector(store => store.Data);
-  const { description, title, channelTitle, publishedAt, thumbnails } = data?.videoData?.snippet;
+  const { description, title, channelTitle, publishedAt, thumbnails,channelId } = data?.videoData?.snippet;
   const {viewCount, commentCount, likeCount} = data?.videoData?.statistics;
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
   const videoSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  const { subscribe } = useSubscriber(channelId);
   const formatLikeCount = (likecount) => {
       if (likecount >= 1000000) {
         return Math.floor((likecount / 1000000)) + 'M';
@@ -27,7 +29,7 @@ const Watch = () => {
     }
   const fomatCommentcount = (comment) => {
     if (comment >= 1000000) {
-      return Math.floor((comment / 1000000)).toFixed(2) + 'M';
+      return ((comment / 1000000)).toFixed(2) + 'M';
     }
     else if (comment >= 1000) {
       return ((comment / 1000)).toFixed(2) + 'K';
@@ -37,8 +39,8 @@ const Watch = () => {
     }
   }
   return (
-    <div className='h-[38rem]'>
-      <div className='bg-[#212121] ml-40 mb-40 overflow-y-scroll no-scrollbar h-[38rem]'>
+    <div className='h-[40rem]'>
+      <div className='bg-[#212121] ml-40 mb-40 overflow-y-scroll no-scrollbar h-[40rem]'>
         <iframe
           width="800"
           height="450"
@@ -55,7 +57,7 @@ const Watch = () => {
             <img src={thumbnails?.maxres?.url?thumbnails?.maxres?.url:thumbnails?.high?.url} alt="url" className='w-10 h-10 rounded-full mr-3' />
             <div className='text-white'>
               <p className='text-md font-medium text-white -mt-[0.1rem]'>{channelTitle.length > 17 ? channelTitle.slice(0, 12) + "..." : channelTitle}</p>
-              <p className='text-[#AAAAAA] text-sm -mt-[0.15rem]'>54.9M subscribers</p>
+              <p className='text-[#AAAAAA] text-sm -mt-[0.15rem]'>{fomatCommentcount(subscribe?.items[0]?.statistics?.subscriberCount) } subscribers</p>
             </div>
             <button className='bg-[#F1F1F1] rounded-full w-[6.5rem] h-9 ml-6 font-medium mt-1 hover:opacity-85'>Subscribe</button>
           </div>
