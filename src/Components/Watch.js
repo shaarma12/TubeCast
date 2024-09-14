@@ -73,7 +73,7 @@ const Watch = () => {
             <button className='flex justify-center bg-[#FFFFFF1A] items-center w-11 h-9 rounded-full hover:bg-[#ffffff35]'><img src={dots} alt='dots' className='h-6' /></button>
           </div>
         </div>
-        <Description data={description} views={viewCount} date={publishedAt} thumbnails={thumbnails} channelTitle={channelTitle} />
+        <Description data={description} views={viewCount} date={publishedAt} thumbnails={thumbnails} channelTitle={channelTitle} channelId={channelId} />
         <p className='text-white font-bold text-xl mb-10 mt-6'>{fomatCommentcount(commentCount)} Comments</p>
       </div>
     </div>
