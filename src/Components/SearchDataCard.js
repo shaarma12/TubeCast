@@ -9,7 +9,7 @@ const SearchDataCard = ({ value }) => {
   const dispatch = useDispatch();
   // custom hook for getting Data through videoID
   const { data } = useVideoId(value?.id?.videoId);
-  const { dp } = useChannelDP(data?.snippet?.channelId);
+  const { dp }  = useChannelDP(data?.snippet?.channelId);
   console.log("dp", dp);
     const formatViewCount = (viewcount) => {
         if (viewcount >= 1000000) {
@@ -44,24 +44,24 @@ const SearchDataCard = ({ value }) => {
     
         // Determine the time category
         let timeDiff;
-        if (diffInMinutes == 0) {
-          if (diffInSeconds == 1) {
+        if (diffInMinutes === 0) {
+          if (diffInSeconds === 1) {
             timeDiff = `${diffInHours} second ago`;
           }
           else {
             timeDiff = `${diffInHours} seconds ago`;
           }
         }
-        else if (diffInHours == 0) {
-          if (diffInMinutes == 1) {
+        else if (diffInHours === 0) {
+          if (diffInMinutes === 1) {
             timeDiff = `${diffInHours} minute ago`;
           }
           else {
             timeDiff = `${diffInHours} minutes ago`;
           }
         }
-        else if (diffInDays == 0) {
-          if (diffInHours == 1) {
+        else if (diffInDays === 0) {
+          if (diffInHours === 1) {
             timeDiff = `${diffInHours} hour ago`;
           }
           else {
@@ -69,28 +69,28 @@ const SearchDataCard = ({ value }) => {
           }
         }
         else if (diffInDays < 7) {
-          if (diffInDays == 1) {
+          if (diffInDays === 1) {
             timeDiff = `${diffInDays} day ago`;
           }
           else {
             timeDiff = `${diffInDays} days ago`;
           }
         } else if (diffInDays < 30) {
-          if (weeksDiff == 7) {
+          if (weeksDiff === 7) {
             timeDiff = `${weeksDiff} week ago`;
           }
           else {
             timeDiff = `${weeksDiff} weeks ago`;
           }
         } else if (diffInDays < 365) {
-          if (monthsDiff == 30) {
+          if (monthsDiff === 30) {
             timeDiff = `${monthsDiff} month ago`;
           }
           else {
             timeDiff = `${monthsDiff} months ago`;
           }
         } else {
-          if (yearsDiff == 365) {
+          if (yearsDiff === 365) {
             timeDiff = `${yearsDiff} year ago`;
           }
           else {

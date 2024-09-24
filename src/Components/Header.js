@@ -80,7 +80,7 @@ const Header = () => {
                     <img src={user} alt="user" className="xl:w-[1.85rem] lg:w-[1.85rem] md:w-5 w-4 md:mr-6 mr-2 hover:cursor-pointer" />
                 </div>
             </div>
-            {inputFocus && searchData.length > 0 && <div className="bg-[#212121] z-50 shadow-lg border-[1px] border-[#393939] absolute left-[28.7rem] rounded-xl  w-[34.1rem] -mt-2">
+            {searchData.length > 0 && <div className="bg-[#212121] z-50 shadow-lg border-[1px] border-[#393939] absolute left-[28.7rem] rounded-xl  w-[34.1rem] -mt-2">
                 <ul className="py-4 px-3">
                     {searchData.map((i, index) => {
                         return <div className="flex hover:bg-[#474747] w-[34rem] hover:-ml-3 hover:pl-[0.85rem] hover:cursor-default" onClick={() => {
