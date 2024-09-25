@@ -3,18 +3,20 @@ import logo from "../Images/logo.png"
 import search from "../Images/search.svg"
 import notification from "../Images/notification.svg"
 import create from "../Images/create.png"
-import user from "../Images/user.png" 
-import cross from "../Images/cross.png" 
+import user from "../Images/user.png"
+import cross from "../Images/cross.png"
 import { useDispatch } from "react-redux"
 import { toogleState } from "../utils/toggleSlice"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { SUGGESTION_API } from "../constant"
 
 const Header = () => {
     const [inputFocus, setInputFocus] = useState(false);
-    const [searchQuery, setSearchQuery] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
     const [searchData, setSearchData] = useState([]);
     const dispatch = useDispatch();
+    const inputRef = useRef();
+    const SuggestionRef = useRef();
     useEffect(() => {
         // Debouncing to minimise the API Calls.
         const timer = setTimeout(() => {
@@ -41,6 +43,17 @@ const Header = () => {
             console.log("Getting Error in Fetching Suggestion API:-", error);
         }
     }
+    useEffect(() => {
+        const clickOutSide = (event) => {
+            if (inputRef.current && !inputRef.current.contains(event.target) && SuggestionRef.current && !SuggestionRef.current.contains(event.target)) {
+                setInputFocus(false);
+            }
+        };
+        document.addEventListener("mousedown", clickOutSide);
+        return () => {
+            document.removeEventListener("mousedown", clickOutSide);
+        };
+    }, []);
     return (
         <>
             <div className="py-3 flex items-center justify-between">
@@ -57,20 +70,18 @@ const Header = () => {
                     {inputFocus && <div className="flex justify-center w-6 absolute right-[65rem] h-10 bg-[#121212] border-[1px] border-gray-600 border-r-0 rounded-tl-full rounded-bl-full">
                         <img src={search} alt="search" className="w-4 ml-6" />
                     </div>}
-                    {<input type="text" placeholder="Search" value={searchQuery} className={`${!inputFocus&& `rounded-tl-full rounded-bl-full text-white bg-[#121212] border-[1px] border-gray-600 md:w-[19rem] xl:w-[33rem] lg:w-[30rem] w-44 md:ml-20 lg:ml-36 xl:h-10 lg:h-10 md:h-8 h-6 placeholder: pl-6 pb-1 xl:text-lg lg:text-lg md:text-base text-xs`} outline-none border-l-0 text-white bg-[#121212] border-[1px] border-gray-600 md:w-[19rem] xl:w-[33rem] lg:w-[30rem] w-44 md:ml-20 lg:ml-36 xl:h-10 lg:h-10 md:h-8 h-6 placeholder: pl-7 pb-1 xl:text-lg lg:text-lg md:text-base text-xs`} onFocus={() => {
+                    <input type="text" placeholder="Search" value={searchQuery} ref={inputRef}  className={`${!inputFocus && `rounded-tl-full rounded-bl-full text-white bg-[#121212] border-[1px] border-gray-600 md:w-[19rem] xl:w-[33rem] lg:w-[30rem] w-44 md:ml-20 lg:ml-36 xl:h-10 lg:h-10 md:h-8 h-6 placeholder: pl-6 pb-1 xl:text-lg lg:text-lg md:text-base text-xs`} outline-none border-l-0 text-white bg-[#121212] border-[1px] border-gray-600 md:w-[19rem] xl:w-[33rem] lg:w-[30rem] w-44 md:ml-20 lg:ml-36 xl:h-10 lg:h-10 md:h-8 h-6 placeholder: pl-7 pb-1 xl:text-lg lg:text-lg md:text-base text-xs`} onFocus={() => {
                         setInputFocus(true);
                     }}
-                        onBlur={() => {
-                            setInputFocus(false);
-                        }
-                        }
                         onChange={(e) => {
                             setSearchQuery(e.target.value);
-                        }} />}
-                    {searchQuery.length > 0&&<img src={cross} alt="cross" className="w-10 -ml-10 hover:rounded-full hover:cursor-pointer hover:bg-[#808080]" onClick={()=>{
+                        }}/>
+                    {searchQuery.length > 0 && <img src={cross} alt="cross" className="w-10 -ml-10 hover:rounded-full hover:cursor-pointer hover:bg-[#808080]" onClick={() => {
                         setSearchQuery("");
-                    }}/>}
-                    <div className="md:w-16 w-5 xl:h-10 lg:h-10 md:h-8 h-6 border-[1px] border-gray-600 rounded-tr-full rounded-br-full bg-[#FFFFFF14] hover:cursor-pointer">
+                    }} />}
+                    <div className="md:w-16 w-5 xl:h-10 lg:h-10 md:h-8 h-6 border-[1px] border-gray-600 rounded-tr-full rounded-br-full bg-[#FFFFFF14] hover:cursor-pointer"onClick={()=>{
+                        window.location.href = `/results/?search_query=${searchQuery}`;
+                    }}>
                         <img src={search} alt="search" className="md:mt-[0.35rem] xl:mt-2 lg:mt-2 mt-[0.35rem] md:ml-5 ml-[0.15rem] md:w-5 w-3" />
                     </div>
                 </div>
@@ -80,7 +91,7 @@ const Header = () => {
                     <img src={user} alt="user" className="xl:w-[1.85rem] lg:w-[1.85rem] md:w-5 w-4 md:mr-6 mr-2 hover:cursor-pointer" />
                 </div>
             </div>
-            {searchData.length > 0 && <div className="bg-[#212121] z-50 shadow-lg border-[1px] border-[#393939] absolute left-[28.7rem] rounded-xl  w-[34.1rem] -mt-2">
+            {inputFocus && searchData.length > 0 && <div className="bg-[#212121] z-50 shadow-lg border-[1px] border-[#393939] absolute left-[28.7rem] rounded-xl  w-[34.1rem] -mt-2" ref={SuggestionRef}>
                 <ul className="py-4 px-3">
                     {searchData.map((i, index) => {
                         return <div className="flex hover:bg-[#474747] w-[34rem] hover:-ml-3 hover:pl-[0.85rem] hover:cursor-default" onClick={() => {
