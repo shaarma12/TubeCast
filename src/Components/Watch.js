@@ -9,6 +9,8 @@ import save from "../Images/save.png";
 import Description from './Description';
 import useSubscriber from '../utils/useSubscriber';
 import useChannelDP from '../utils/useChannelDP';
+import Comments from './Comments';
+
 const Watch = () => {
   const data = useSelector(store => store.Data);
   const { description, title, channelTitle, publishedAt, thumbnails,channelId } = data?.videoData?.snippet;
@@ -75,6 +77,9 @@ const Watch = () => {
         </div>
         <Description data={description} views={viewCount} date={publishedAt} thumbnails={thumbnails} channelTitle={channelTitle} channelId={channelId} />
         <p className='text-white font-bold text-xl mb-10 mt-6'>{fomatCommentcount(commentCount)} Comments</p>
+        <div>
+          <Comments/>
+        </div>
       </div>
     </div>
   );
