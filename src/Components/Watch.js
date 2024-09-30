@@ -10,6 +10,7 @@ import Description from './Description';
 import useSubscriber from '../utils/useSubscriber';
 import useChannelDP from '../utils/useChannelDP';
 import Comments from './Comments';
+import useComment from '../utils/useComment';
 
 const Watch = () => {
   const data = useSelector(store => store.Data);
@@ -20,6 +21,8 @@ const Watch = () => {
   const videoSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
   const { subscribe } = useSubscriber(channelId);
   const { dp } = useChannelDP(channelId);
+  const { comm } = useComment(videoId);
+  console.log("Comments", comm);
   const formatLikeCount = (likecount) => {
       if (likecount >= 1000000) {
         return Math.floor((likecount / 1000000)) + 'M';
@@ -78,7 +81,9 @@ const Watch = () => {
         <Description data={description} views={viewCount} date={publishedAt} thumbnails={thumbnails} channelTitle={channelTitle} channelId={channelId} />
         <p className='text-white font-bold text-xl mb-10 mt-6'>{fomatCommentcount(commentCount)} Comments</p>
         <div>
-          <Comments/>
+          {comm?.items.map((data) => {
+            return <Comments key={data?.id} commentData={data?.snippet?.topLevelComment?.snippet}/>
+          })}
         </div>
       </div>
     </div>
