@@ -13,7 +13,7 @@ const Comments = ({ commentData }) => {
           <p className='text-white font-bold mr-2'>{authorDisplayName}</p>
                   <p className='text-[#AAAAAA]'>2 minutes ago</p>
               </div>
-        <p className='text-white'>{textOriginal.split("\n").map((line,index) => (<React.Fragment key = { index }>{ line}<br/></React.Fragment>))}</p>
+        <p className='text-white w-[44rem]'>{textOriginal.split("\n").map((line,index) => (<React.Fragment key = { index }>{ line}<br/></React.Fragment>))}</p>
               <div className='flex mt-4'>
                   <div className='flex mr-3'>
                       <img src={likes} alt='likes' className='h-7 mr-1 hover:rounded-full hover:bg-[#AAAAAA] cursor-pointer'/>
