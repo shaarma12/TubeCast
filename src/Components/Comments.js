@@ -1,13 +1,17 @@
 import React from 'react'
 import unlike from "../Images/unlike.png";
 import likes from "../Images/likes.png";
+import user from "../Images/user.png";
 
 const Comments = ({ commentData }) => {
   console.log("commentData", commentData);
-  const {authorDisplayName,likeCount,authorProfileImageUrl,textOriginal,publishedAt} = commentData;
+  const { authorDisplayName, likeCount, authorProfileImageUrl, textOriginal, publishedAt } = commentData;
+  const handleError = (e) => {
+    e.target.src = user;
+  };
   return (
     <div className='flex mb-6'> 
-          <img className='rounded-full h-10' src={authorProfileImageUrl} alt='authImg'/>
+          <img className='rounded-full h-10' src={authorProfileImageUrl} alt='authImg' onError={handleError}/>
           <div className='ml-3'>
               <div className='flex text-sm'>
           <p className='text-white font-bold mr-2'>{authorDisplayName}</p>
