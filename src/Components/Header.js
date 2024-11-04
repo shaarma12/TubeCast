@@ -37,7 +37,6 @@ const Header = () => {
             });
             const jsonData = await apiData.json();
             setSearchData(jsonData[1]);
-            console.log("Suggestion", searchData);
         }
         catch (error) {
             console.log("Getting Error in Fetching Suggestion API:-", error);

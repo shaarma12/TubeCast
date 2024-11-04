@@ -14,13 +14,11 @@ const SearchData = () => {
         const data = await fetch(SUGGESTION_DATA_API + params);
         const dataJson = await data.json();
       setSearchData(dataJson?.items);
-      console.log("DataJson", searchData);
-      console.log("params", params);
     }
   return (
     <div className='h-[37rem] overflow-y-scroll no-scrollbar'>
-      {searchData.map((i) => {
-        return <SearchDataCard value={i} />
+      {searchData.map((i,index) => {
+        return <SearchDataCard key={index} value={i} />
           })}
     </div>
   )

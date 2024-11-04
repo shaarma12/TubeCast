@@ -93,8 +93,6 @@ const Comments = ({ commentData }) => {
     }
     return result;
   };
-  console.log("publishedAt", new Date(publishedAt));
-  console.log("publishedAtModifier", commentPublishedDateModifier(publishedAt));
   return (
     <div className='flex mb-6'> 
           <img className='rounded-full h-10' src={authorProfileImageUrl} alt='authImg' onError={handleError}/>

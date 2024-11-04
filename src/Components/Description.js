@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import DOMPurify from 'dompurify';
 import useChannelDP from '../utils/useChannelDP';
-const Description = ({ data,views,date,thumbnails,channelTitle,channelId }) => {
+const Description = ({ data = {} }) => {
   const [toggle, setToggle] = useState(false);
-  const { dp } = useChannelDP(channelId);
+  const { dp } = useChannelDP(data?.channelId);
   // Function to format the text by adding line breaks and converting URLs to links
-  const formatText = (text) => {
+  const formatText = (text = '') => {
     // Convert URLs into clickable links
     let formattedText = text.replace(
       /(https?:\/\/[^\s]+)/g,
@@ -113,23 +113,23 @@ const Description = ({ data,views,date,thumbnails,channelTitle,channelId }) => {
     }
   }
   // sanitized data as we are using dangerouslySetInnerHTML which may lead to XSS attacks.
-  const sanitizedData = DOMPurify.sanitize(formatText(data));
+  const sanitizedData = DOMPurify.sanitize(formatText(data?.description));
   return (
     <div className='w-[50rem] bg-[#FFFFFF1A] rounded-xl p-3 mt-4 cursor-pointer' onClick={() => {
       setToggle(!toggle);
     }}>
       <div className='flex text-white font-bold'>
-        {views&&<p className='mr-2'>{viewCount(views)} views</p>}
-        <p>{getTimeDifference(date) }</p>
+        {data?.views&&<p className='mr-2'>{viewCount(data?.views)} views</p>}
+        <p>{getTimeDifference(data?.date) }</p>
         </div>
       {toggle?<div><div className='text-white font-semibold' dangerouslySetInnerHTML={{ __html: sanitizedData }} /><div className='flex mt-5'>
           <img src={dp} alt='url' className='w-12 h-12 rounded-full mr-3' />
           <div className='text-white'>
-            <p className='text-xl font-bold text-white -mt-[0.1rem]'>{channelTitle.length > 20 ? channelTitle.slice(0,19)+"...":channelTitle}</p>
+            <p className='text-xl font-bold text-white -mt-[0.1rem]'>{data?.channelTitle.length > 20 ? data?.channelTitle.slice(0,19)+"...":data?.channelTitle}</p>
             <p className='text-[#AAAAAA] text-sm -mt-[0.15rem]'>54.9M subscribers</p>
           </div>
         </div><p className='font-semibold text-white mt-8'>Show less</p></div>
-      :<div className='text-white font-semibold' dangerouslySetInnerHTML={{ __html: sanitizedData.length > 245? sanitizedData.slice(0,244)+"  ...more":formatText(data) }} />
+      :<div className='text-white font-semibold' dangerouslySetInnerHTML={{ __html: sanitizedData.length > 245? sanitizedData.slice(0,244)+"  ...more":formatText(data?.description) }} />
       }
     </div>
   );

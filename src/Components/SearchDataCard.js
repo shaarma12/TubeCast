@@ -10,7 +10,6 @@ const SearchDataCard = ({ value }) => {
   // custom hook for getting Data through videoID
   const { data } = useVideoId(value?.id?.videoId);
   const { dp }  = useChannelDP(data?.snippet?.channelId);
-  console.log("dp", dp);
     const formatViewCount = (viewcount) => {
         if (viewcount >= 1000000) {
           return (viewcount / 1000000).toFixed(1) + 'M';
