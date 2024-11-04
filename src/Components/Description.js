@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DOMPurify from 'dompurify';
 import useChannelDP from '../utils/useChannelDP';
-const Description = ({ data = {} }) => {
+const Description = ({ data={}}) => {
   const [toggle, setToggle] = useState(false);
   const { dp } = useChannelDP(data?.channelId);
   // Function to format the text by adding line breaks and converting URLs to links
@@ -120,7 +120,7 @@ const Description = ({ data = {} }) => {
     }}>
       <div className='flex text-white font-bold'>
         {data?.views&&<p className='mr-2'>{viewCount(data?.views)} views</p>}
-        <p>{getTimeDifference(data?.date) }</p>
+        <p>{getTimeDifference(data?.publishedAt) }</p>
         </div>
       {toggle?<div><div className='text-white font-semibold' dangerouslySetInnerHTML={{ __html: sanitizedData }} /><div className='flex mt-5'>
           <img src={dp} alt='url' className='w-12 h-12 rounded-full mr-3' />
