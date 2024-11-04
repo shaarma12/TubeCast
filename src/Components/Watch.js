@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import likes from "../Images/likes.png";
 import dots from "../Images/dots.png";
 import unlike from "../Images/unlike.png";
@@ -119,8 +119,8 @@ const Watch = () => {
             </div>
             {sortBy && (
               <div className='bg-[#3e3e3e] w-[8.5rem] h-28 flex flex-col items-center absolute left-10 justify-center rounded-lg z-20' ref={dropdownRef}>
-                <p className='text-white font-medium pb-5 cursor-pointer' onClick={() => { setSortData(false); setSortBy(false); }}>Top comments</p>
-                <p className='text-white font-medium pb-2 mr-3 cursor-pointer' onClick={() => { setSortData(true); setSortBy(false); }}>Newest first</p>
+               <Link className={`${!sortData?'text-white font-normal px-[0.85rem] py-[0.6rem] bg-[#ffffff3d] mb-2':'text-white font-normal pb-5 hover:px-[0.85rem] hover:py-[0.6rem] hover:bg-[#ffffff18] mt-2'}`}><p onClick={() => { setSortData(false); setSortBy(false); }}>Top comments</p></Link>
+                <Link className={`${sortData?'text-white font-normal pb-2  px-[1.5rem] py-[0.6rem] bg-[#ffffff3d] mb-3':'text-white font-normal pb-2 mr-3 hover:px-[1.5rem] hover:py-[0.6rem] hover:bg-[#ffffff18] hover:mb-3 hover:mr-0'}`}><p onClick={() => { setSortData(true); setSortBy(false); }}>Newest first</p></Link>
               </div>
             )}
           </div>
