@@ -12,6 +12,7 @@ import useSubscriber from '../utils/useSubscriber';
 import useChannelDP from '../utils/useChannelDP';
 import Comments from './Comments';
 import useComment from '../utils/useComment';
+import Shorts from './Shorts';
 
 const Watch = () => {
   const [sortBy, setSortBy] = useState(false);
@@ -56,17 +57,17 @@ const Watch = () => {
     };
   }, []);
   return (
-    <div className='h-[40rem]'>
-      <div className='bg-[#212121] ml-40 mb-40 overflow-y-scroll no-scrollbar h-[40rem]'>
+    <div className='flex justify-between gap-6 mt-4'>
+      <div className='bg-[#212121] ml-[4.5rem] mb-40'>
         <iframe
-          width="800"
-          height="450"
+          width="978"
+          height="482"
           src={videoSrc}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
-          className='rounded-2xl mt-4 mb-7'
+          className='rounded-2xl mb-7'
         ></iframe>
         <p className='text-white text-xl font-semibold w-[50rem] -mt-4'>{data?.videoData?.snippet?.title}</p>
         <div className='flex mt-2'>
@@ -84,7 +85,7 @@ const Watch = () => {
             </div>
             <button className='bg-[#F1F1F1] rounded-full w-[6.5rem] h-9 ml-6 font-medium mt-1 hover:opacity-85'>Subscribe</button>
           </div>
-          <div className='flex ml-10 mt-1'>
+          <div className='flex ml-48 mt-1'>
             <div className='flex items-center mr-2 ml-[4.6rem]'>
               {data?.videoData?.statistics?.likeCount && (
                 <button className='flex justify-center bg-[#FFFFFF1A] items-center w-[5.5rem] h-9 rounded-tl-3xl rounded-bl-3xl hover:bg-[#ffffff35] border-r-2 border-[#ffffff35]'>
@@ -140,6 +141,9 @@ const Watch = () => {
               <Comments key={data?.id} commentData={data?.snippet?.topLevelComment?.snippet} />
             ))}
         </div>
+      </div>
+      <div className='border border-red-600 w-[25rem]'>
+        <Shorts/>
       </div>
     </div>
   );

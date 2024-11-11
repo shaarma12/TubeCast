@@ -115,7 +115,7 @@ const Description = ({ data={}}) => {
   // sanitized data as we are using dangerouslySetInnerHTML which may lead to XSS attacks.
   const sanitizedData = DOMPurify.sanitize(formatText(data?.description));
   return (
-    <div className='w-[50rem] bg-[#FFFFFF1A] rounded-xl p-3 mt-4 cursor-pointer' onClick={() => {
+    <div className='w-[61rem] bg-[#FFFFFF1A] rounded-xl p-3 mt-4 cursor-pointer' onClick={() => {
       setToggle(!toggle);
     }}>
       <div className='flex text-white font-bold'>

@@ -4,9 +4,9 @@ import SidebarData from './SidebarData'
 import { SIDEBARS, YOU, EXPLORE, MORE, GENERAL } from "../constant"
 import arrow from "../Images/arrow.png"
 const WatchSidebar = () => {
-    return ReactDOM.createPortal(
+    return (
         <>
-            <div className='fixed top-0 left-0 right-0 bottom-0 bg-[#00000034]'></div>
+            {/* <div className='fixed top-0 left-0 right-0 bottom-0 bg-[#00000034]'></div> */}
             <div className='h-[40rem] overflow-y-scroll no-scrollbar absolute bg-[#212121] shadow-2xl'>
                 <div className="mt-4">
                     {SIDEBARS.map((i) => {
@@ -55,7 +55,7 @@ const WatchSidebar = () => {
                     </div>
                 </div>
             </div>
-        </>, document.querySelector(".popupBehind"));
+        </>);
 }
 
 export default WatchSidebar
