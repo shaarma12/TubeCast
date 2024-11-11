@@ -34,6 +34,7 @@ export const VIDEOID_API = `https://youtube.googleapis.com/youtube/v3/videos?par
 export const SUBSCRIBER_API = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&key=${API_KEY}&id=`;
 export const CHANNELDP_API = `https://www.googleapis.com/youtube/v3/channels?part=snippet&i&key=${API_KEY}&fields=items%2Fsnippet%2Fthumbnails&id=`;
 export const COMMENTS_API = `https://www.googleapis.com/youtube/v3/commentThreads?key=${API_KEY}&textFormat=plainText&part=snippet&maxResults=100&videoId=`
+export const YOUTUBE_SHORTS_API = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=100&videoDuration=short&type=video&key=${API_KEY}channelId=`;
 export const TAGS = ["All", "Live", "Sports", "Software", "Reaction", "News", "Cricket", "Movies", "Thriller", "Indian", "Mixes", "Album", "Recently", "Football", "Shoes", "Clothes", "Fashion", "Taj", "Phones", "Shirts", "England", "TV", "Fridge"];
 export const SIDEBARS = [{
     id:1,
