@@ -168,11 +168,11 @@ const Watch = () => {
         </div>
       </div>
       <div className='w-[25rem]'>
-        <div className='flex gap-1 w-[25rem]'>
-          <ShortsCard />
-          <ShortsCard />
-          <ShortsCard />
-          </div>
+        {shorts.length >= 3&&<div className='flex gap-1 w-[25rem]'>
+          <ShortsCard info={shorts[0]?.snippet?.thumbnails?.high?.url} />
+          <ShortsCard info={shorts[1]?.snippet?.thumbnails?.high?.url} />
+          <ShortsCard info={shorts[2]?.snippet?.thumbnails?.high?.url} />
+        </div>}
       </div>
     </div>
   );
