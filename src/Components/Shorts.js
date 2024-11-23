@@ -40,13 +40,13 @@ const Shorts = ({channelId}) => {
   }, []);
   return (
     <div className='flex items-center justify-center'>
-      <img src={leftArrow} alt='leftArrow' className={`${currentIndex === 0 ?'hidden':'w-10 h-10 absolute left-[66rem] cursor-pointer'}`} onClick={handlePrevious}/>
+      <img src={leftArrow} alt='leftArrow' className={`${currentIndex === 0 ?'hidden':'w-10 h-10 absolute left-[66rem] cursor-pointer hover:-scale-y-105'}`} onClick={handlePrevious}/>
       {shorts.length >= 3 && <div className='flex gap-1 w-[25rem]'>
         {shorts.slice(currentIndex,currentIndex + 3).map((i) => {
           return <ShortsCard info={i?.snippet?.thumbnails?.high?.url}/>
         })}
       </div>}
-      <img src={rightArrow} alt='rightArrow' className={`${currentIndex === shorts.length ? 'hidden':'w-10 h-10 absolute left-[90.3rem] cursor-pointer'}`} onClick={handleNext}/>
+      <img src={rightArrow} alt='rightArrow' className={`${currentIndex === shorts.length-4 ? 'hidden':'w-10 h-10 absolute left-[90.3rem] cursor-pointer hover:-scale-y-105'}`} onClick={handleNext}/>
       </div>
   )
 }
