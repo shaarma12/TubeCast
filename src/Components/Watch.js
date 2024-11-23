@@ -12,11 +12,9 @@ import useSubscriber from '../utils/useSubscriber';
 import useChannelDP from '../utils/useChannelDP';
 import Comments from './Comments';
 import useComment from '../utils/useComment';
-import ShortsCard from './ShortsCard';
-import { YOUTUBE_SHORTS_API } from '../constant';
+import Shorts from './Shorts';
 
 const Watch = () => {
-  const [shorts, setShorts] = useState([]);
   const [sortBy, setSortBy] = useState(false);
   const [sortData, setSortData] = useState(false);
   const data = useSelector(store => store.Data);
@@ -28,29 +26,7 @@ const Watch = () => {
   const { comm } = useComment(videoId);
   const sortRef = useRef();
   const dropdownRef = useRef();
-  const search = (str) => {
-    for (let i = 0; i < str.length; i++)
-    {
-      if (str[i] === '#')
-      {
-        return true;
-      }
-    }
-    return false;
-  }
-  const getShortsVideo = async() => {
-    const rep = await fetch(YOUTUBE_SHORTS_API + data?.videoData?.snippet?.channelId);
-    const res = await rep.json();
-    const filterRes = res?.items.filter((i) => {
-      return search(i?.snippet?.title) === true;
-    })
-    console.log("filterData",filterRes);
-    setShorts(filterRes);
-  };
-  useEffect(() => {
-    getShortsVideo();
-  }, []);
-
+ 
   const formatLikeCount = (likecount) => {
     if (likecount >= 1000000) {
       return Math.floor((likecount / 1000000)) + 'M';
@@ -168,11 +144,7 @@ const Watch = () => {
         </div>
       </div>
       <div className='w-[25rem]'>
-        {shorts.length >= 3&&<div className='flex gap-1 w-[25rem]'>
-          <ShortsCard info={shorts[0]?.snippet?.thumbnails?.high?.url} />
-          <ShortsCard info={shorts[1]?.snippet?.thumbnails?.high?.url} />
-          <ShortsCard info={shorts[2]?.snippet?.thumbnails?.high?.url} />
-        </div>}
+        <Shorts channelId={data} />
       </div>
     </div>
   );
