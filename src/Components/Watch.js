@@ -111,7 +111,7 @@ const Watch = () => {
             </button>
           </div>
         </div>
-        <Description data={data?.videoData?.snippet} />
+        <Description data={data?.videoData?.snippet} subscribe={subscribe?.items[0]?.statistics?.subscriberCount}/>
         <div className='flex'>
           <p className='text-white font-bold text-xl mb-10 mt-6'>{formatCommentCount(data?.videoData?.statistics?.commentCount)} Comments</p>
           <div className='relative z-10'>

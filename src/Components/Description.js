@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DOMPurify from 'dompurify';
 import useChannelDP from '../utils/useChannelDP';
-const Description = ({ data={}}) => {
+const Description = ({ data = {}, subscribe }) => {
   const [toggle, setToggle] = useState(false);
   const { dp } = useChannelDP(data?.channelId);
   // Function to format the text by adding line breaks and converting URLs to links
@@ -126,7 +126,7 @@ const Description = ({ data={}}) => {
           <img src={dp} alt='url' className='w-12 h-12 rounded-full mr-3' />
           <div className='text-white'>
             <p className='text-xl font-bold text-white -mt-[0.1rem]'>{data?.channelTitle.length > 20 ? data?.channelTitle.slice(0,19)+"...":data?.channelTitle}</p>
-            <p className='text-[#AAAAAA] text-sm -mt-[0.15rem]'>54.9M subscribers</p>
+            <p className='text-[#AAAAAA] text-sm -mt-[0.15rem]'>{viewCount(subscribe)} subscribers</p>
           </div>
         </div><p className='font-semibold text-white mt-8'>Show less</p></div>
       :<div className='text-white font-semibold' dangerouslySetInnerHTML={{ __html: sanitizedData.length > 245? sanitizedData.slice(0,244)+"  ...more":formatText(data?.description) }} />
