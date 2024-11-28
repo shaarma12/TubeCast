@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import useVideoId from '../utils/useVideoId';
 import verify from "../Images/verify.png";
 import useChannelDP from '../utils/useChannelDP';
+import { toogleBars, toogleTag } from '../utils/toggleSlice';
 const SearchDataCard = ({ value }) => {
   const dispatch = useDispatch();
   // custom hook for getting Data through videoID
@@ -103,6 +104,8 @@ const SearchDataCard = ({ value }) => {
     <div>
       <Link to={`/watch?v=${data?.id}`}><div className='flex w-[72.2rem] -mb-12 mt-4 h-[21rem] hover:cursor-pointer ml-16' onClick={() => {
         dispatch(apiResponse(data));
+        dispatch(toogleTag(false));
+        dispatch(toogleBars(false));
       }}>
         <img src={data?.snippet?.thumbnails?.maxres?.url ? data?.snippet?.thumbnails?.maxres?.url : data?.snippet?.thumbnails?.high?.url} alt='videoImage' className='rounded-lg w-[30rem] h-72' />
         <div className='mt-3'>
