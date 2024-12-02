@@ -39,9 +39,9 @@ const Shorts = ({channelId}) => {
     getShortsVideo();
   }, []);
   return (
-    <div className='flex items-center justify-center'>
+    <div className='flex items-center justify-center border-t-[0.5px] border-[#c4c1c1] mt-2'>
       <img src={leftArrow} alt='leftArrow' className={`${currentIndex === 0 ?'hidden':'w-10 h-10 absolute left-[66rem] cursor-pointer hover:-scale-y-105'}`} onClick={handlePrevious}/>
-      {shorts.length >= 3 && <div className='flex gap-1 w-[25rem]'>
+      {shorts.length >= 3 && <div className='flex gap-1 w-[25rem] mt-2'>
         {shorts.slice(currentIndex,currentIndex + 3).map((i) => {
           return <ShortsCard info={i}/>
         })}

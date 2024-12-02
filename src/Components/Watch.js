@@ -144,6 +144,10 @@ const Watch = () => {
         </div>
       </div>
       <div className='w-[25rem]'>
+        <div className='flex'>
+        <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Youtube_shorts_icon.svg/724px-Youtube_shorts_icon.svg.png' alt='YTShorts' className='mt-1 w-5 h-6 mr-2' />
+          <p className='text-white text-xl font-semibold'>Shorts</p>
+          </div>
         <Shorts channelId={data} />
       </div>
     </div>
