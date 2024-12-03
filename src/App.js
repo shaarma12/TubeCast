@@ -6,6 +6,7 @@ import AppStore from "./utils/AppStore";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Watch from "./Components/Watch";
 import SearchData from "./Components/SearchData";
+import ShortsWatch from "./Components/ShortsWatch";
 
 const appRouter = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const appRouter = createBrowserRouter([
       {
         path: "results",
         element: <SearchData />
+      },
+      {
+        path: "shorts/:shortId",
+        element: <ShortsWatch/>,
       }
     ]
   },
