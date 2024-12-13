@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Watch from "./Components/Watch";
 import SearchData from "./Components/SearchData";
 import ShortsWatch from "./Components/ShortsWatch";
+import Forms from "./Components/Forms";
 
 const appRouter = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const appRouter = createBrowserRouter([
       {
         path: "shorts/:shortId",
         element: <ShortsWatch/>,
+      },
+      {
+        path: "forms",
+        element:<Forms/>
       }
     ]
   },
