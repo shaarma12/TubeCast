@@ -3,7 +3,7 @@ import ShortsCard from './ShortsCard'
 import { YOUTUBE_SHORTS_API } from '../constant';
 import leftArrow from "../Images/leftArrow.png";
 import rightArrow from "../Images/rightArrow.png";
-const Shorts = ({channelId}) => {
+const Shorts = ({channelId,setIsShorts}) => {
   const [shorts, setShorts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const handleNext = () => {
@@ -32,22 +32,29 @@ const Shorts = ({channelId}) => {
     const filterRes = res?.items.filter((i) => {
       return search(i?.snippet?.title) === true;
     })
-    console.log("filterData",filterRes);
     setShorts(filterRes);
   };
   useEffect(() => {
     getShortsVideo();
-  }, []);
+  }, [channelId]);
+
+  useEffect(() => {
+    setIsShorts(shorts.length);
+  }, [shorts, setIsShorts]);
+  
+  console.log("Shorts Length", shorts.length);
   return (
-    <div className='flex items-center justify-center border-t-[0.5px] border-[#c4c1c1] mt-2'>
-      <img src={leftArrow} alt='leftArrow' className={`${currentIndex === 0 ?'hidden':'w-10 h-10 absolute left-[66rem] cursor-pointer hover:-scale-y-105'}`} onClick={handlePrevious}/>
-      {shorts.length >= 3 && <div className='flex gap-1 w-[25rem] mt-2'>
-        {shorts.slice(currentIndex,currentIndex + 3).map((i) => {
-          return <ShortsCard info={i}/>
-        })}
+    <>
+      {shorts.length >= 3&&<div className='flex items-center justify-center border-t-[0.5px] border-[#c4c1c1] mt-2'>
+        <img src={leftArrow} alt='leftArrow' className={`${currentIndex === 0 ? 'hidden' : 'w-10 h-10 absolute left-[66rem] cursor-pointer hover:-scale-y-105'}`} onClick={handlePrevious} />
+        <div className='flex gap-1 w-[25rem] mt-2'>
+          {shorts.slice(currentIndex, currentIndex + 3).map((i) => {
+            return <ShortsCard info={i} />
+          })}
+        </div>
+        <img src={rightArrow} alt='rightArrow' className={`${currentIndex + 3 >= shorts.length - 3 ? 'hidden' : 'w-10 h-10 absolute left-[90.3rem] cursor-pointer hover:-scale-y-105'}`} onClick={handleNext} />
       </div>}
-      <img src={rightArrow} alt='rightArrow' className={`${currentIndex+3 >= shorts.length-3 ? 'hidden':'w-10 h-10 absolute left-[90.3rem] cursor-pointer hover:-scale-y-105'}`} onClick={handleNext}/>
-      </div>
+      </>
   )
 }
 

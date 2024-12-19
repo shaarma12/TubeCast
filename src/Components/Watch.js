@@ -15,6 +15,7 @@ import useComment from '../utils/useComment';
 import Shorts from './Shorts';
 
 const Watch = () => {
+  const [Isshorts, setIsShorts] = useState(0);
   const [sortBy, setSortBy] = useState(false);
   const [sortData, setSortData] = useState(false);
   const data = useSelector(store => store.Data);
@@ -57,6 +58,7 @@ const Watch = () => {
       document.removeEventListener("mousedown", clickOutSide);
     };
   }, []);
+  console.log("IsShorts", Isshorts);
   return (
     <div className='flex justify-between gap-6 mt-4'>
       <div className='bg-[#212121] ml-[4.5rem] mb-40'>
@@ -144,11 +146,11 @@ const Watch = () => {
         </div>
       </div>
       <div className='w-[25rem]'>
-        <div className='flex'>
-        <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Youtube_shorts_icon.svg/724px-Youtube_shorts_icon.svg.png' alt='YTShorts' className='mt-1 w-5 h-6 mr-2' />
+        {Isshorts > 3&&<div className='flex'>
+          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Youtube_shorts_icon.svg/724px-Youtube_shorts_icon.svg.png' alt='YTShorts' className='mt-1 w-5 h-6 mr-2' />
           <p className='text-white text-xl font-semibold'>Shorts</p>
-          </div>
-        <Shorts channelId={data} />
+        </div>}
+        <Shorts channelId={data} setIsShorts={setIsShorts}/>
       </div>
     </div>
   );
