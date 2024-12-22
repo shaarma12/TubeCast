@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useSearchParams } from 'react-router-dom';
 import likes from "../Images/likes.png";
 import dots from "../Images/dots.png";
@@ -13,6 +13,7 @@ import useChannelDP from '../utils/useChannelDP';
 import Comments from './Comments';
 import useComment from '../utils/useComment';
 import Shorts from './Shorts';
+import { toogleState } from '../utils/toggleSlice';
 
 const Watch = () => {
   const [Isshorts, setIsShorts] = useState(0);
@@ -28,6 +29,8 @@ const Watch = () => {
   const sortRef = useRef();
   const dropdownRef = useRef();
   const flag = useSelector((store) => store.Toggle?.flag);
+  const dispatch = useDispatch();
+
   const formatLikeCount = (likecount) => {
     if (likecount >= 1000000) {
       return Math.floor((likecount / 1000000)) + 'M';
@@ -73,7 +76,9 @@ const Watch = () => {
   }, [flag]);
   return (
     <>
-      {flag && <div className='fixed inset-0 bg-black bg-opacity-50 ml-[15.2rem]'></div>}
+      {flag && <div className='fixed inset-0 bg-black bg-opacity-50 ml-[15.2rem]' onClick={() => {
+        dispatch(toogleState(false));
+      }}></div>}
     <div className='flex justify-between gap-6 mt-4'>
       <div className='bg-[#212121] ml-[4.5rem] mb-40'>
         <iframe
