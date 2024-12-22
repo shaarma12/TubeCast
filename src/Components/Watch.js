@@ -27,7 +27,7 @@ const Watch = () => {
   const { comm } = useComment(videoId);
   const sortRef = useRef();
   const dropdownRef = useRef();
- 
+  const flag = useSelector((store) => store.Toggle?.flag);
   const formatLikeCount = (likecount) => {
     if (likecount >= 1000000) {
       return Math.floor((likecount / 1000000)) + 'M';
@@ -58,8 +58,22 @@ const Watch = () => {
       document.removeEventListener("mousedown", clickOutSide);
     };
   }, []);
-  console.log("IsShorts", Isshorts);
+  
+  useEffect(() => {
+    if (flag) {
+      document.body.style.overflow = 'hidden';
+    }
+    else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    }
+  }, [flag]);
   return (
+    <>
+      {flag && <div className='fixed inset-0 bg-black bg-opacity-50 ml-[15.2rem]'></div>}
     <div className='flex justify-between gap-6 mt-4'>
       <div className='bg-[#212121] ml-[4.5rem] mb-40'>
         <iframe
@@ -152,7 +166,8 @@ const Watch = () => {
         </div>}
         <Shorts channelId={data} setIsShorts={setIsShorts}/>
       </div>
-    </div>
+      </div>
+      </>
   );
 };
 
