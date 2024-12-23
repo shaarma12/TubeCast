@@ -45,14 +45,14 @@ const Shorts = ({channelId,setIsShorts}) => {
   console.log("Shorts Length", shorts.length);
   return (
     <>
-      {shorts.length >= 3&&<div className='flex items-center justify-center border-t-[0.5px] border-[#c4c1c1] mt-2'>
-        <img src={leftArrow} alt='leftArrow' className={`${currentIndex === 0 ? 'hidden' : 'w-10 h-10 absolute left-[66rem] cursor-pointer hover:-scale-y-105'}`} onClick={handlePrevious} />
+      {shorts.length >= 3&&<div className='flex items-center justify-center mt-2'>
+        <img src={leftArrow} alt='leftArrow' className={`${currentIndex === 0 ? 'hidden' : 'w-10 h-10 absolute left-[64.5rem] cursor-pointer hover:-scale-y-105'}`} onClick={handlePrevious} />
         <div className='flex gap-1 w-[25rem] mt-2'>
           {shorts.slice(currentIndex, currentIndex + 3).map((i) => {
             return <ShortsCard info={i} />
           })}
         </div>
-        <img src={rightArrow} alt='rightArrow' className={`${currentIndex + 3 >= shorts.length - 3 ? 'hidden' : 'w-10 h-10 absolute left-[90.3rem] cursor-pointer hover:-scale-y-105'}`} onClick={handleNext} />
+        <img src={rightArrow} alt='rightArrow' className={`${currentIndex + 3 >= shorts.length - 3 ? 'hidden' : 'w-10 h-10 absolute left-[89.8rem] cursor-pointer hover:-scale-y-105'}`} onClick={handleNext} />
       </div>}
       </>
   )
