@@ -14,6 +14,7 @@ import Comments from './Comments';
 import useComment from '../utils/useComment';
 import Shorts from './Shorts';
 import { toogleState } from '../utils/toggleSlice';
+import Recommend from './Recommend';
 
 const Watch = () => {
   const [Isshorts, setIsShorts] = useState(0);
@@ -40,7 +41,7 @@ const Watch = () => {
       return likecount;
     }
   };
-
+  console.log("Data from Watch", data?.videoData?.snippet?.description);
   const formatCommentCount = (comment) => {
     if (comment >= 1000000) {
       return ((comment / 1000000)).toFixed(2) + 'M';
@@ -161,14 +162,17 @@ const Watch = () => {
               <Comments key={data?.id} commentData={data?.snippet?.topLevelComment?.snippet} />
             ))}
         </div>
-      </div>
+        </div>
+        <div>
       <div className='w-[25rem]'>
         {Isshorts > 3&&<div className='flex'>
           <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Youtube_shorts_icon.svg/724px-Youtube_shorts_icon.svg.png' alt='YTShorts' className='mt-1 w-5 h-6 mr-2' />
           <p className='text-white text-xl font-semibold'>Shorts</p>
         </div>}
-        <Shorts channelId={data} setIsShorts={setIsShorts}/>
-      </div>
+          <Shorts channelId={data} setIsShorts={setIsShorts} />
+          </div>
+          <Recommend Recomm={data?.videoData?.snippet?.description}/>
+          </div>
       </div>
       </>
   );

@@ -52,7 +52,7 @@ const Shorts = ({channelId,setIsShorts}) => {
             return <ShortsCard info={i} />
           })}
         </div>
-        <img src={rightArrow} alt='rightArrow' className={`${currentIndex + 3 >= shorts.length - 3 ? 'hidden' : 'w-10 h-10 absolute left-[89.8rem] cursor-pointer hover:-scale-y-105'}`} onClick={handleNext} />
+        <img src={rightArrow} alt='rightArrow' className={`${currentIndex + 3 >= shorts.length - 3 ? 'hidden' : 'w-10 h-10 absolute left-[89rem] cursor-pointer hover:-scale-y-105'}`} onClick={handleNext} />
       </div>}
       </>
   )
