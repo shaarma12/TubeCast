@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { VIDEOID_API } from '../constant'
 
 
-const useVideoId = (videoID) => {
+const useVideoId = (videoID ) => {
     const [data, setData] = useState({});
     const videoData = async() => {
         const Data = await fetch(VIDEOID_API + videoID);

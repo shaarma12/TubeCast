@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 
 const ShortsWatch = () => {
     const videoId = useParams();
-    console.log("videoId", videoId?.shortId);
     const videoSrc = `https://www.youtube.com/embed/${videoId?.shortId}?autoplay=1`;
   return (
     <div className='h-[40rem] flex justify-center items-center'>

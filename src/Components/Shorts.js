@@ -42,7 +42,6 @@ const Shorts = ({channelId,setIsShorts}) => {
     setIsShorts(shorts.length);
   }, [shorts, setIsShorts]);
   
-  console.log("Shorts Length", shorts.length);
   return (
     <>
       {shorts.length >= 3&&<div className='flex items-center justify-center mt-2'>

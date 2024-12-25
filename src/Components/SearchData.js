@@ -6,10 +6,9 @@ import useSearchVideo from "../utils/useSearchVideo";
 const SearchData = () => {
   const [searchParams] = useSearchParams();
   let params = searchParams.get("search_query");
-  console.log("params", params);
   // calling the custom hook for search data.
-  const { searchData } = useSearchVideo({params});
-  console.log("SearchData", searchData);
+  const { searchData } = useSearchVideo({ params });
+  
   return (
     <div className="h-[37rem] overflow-y-scroll no-scrollbar">
       {searchData.map((i, index) => {

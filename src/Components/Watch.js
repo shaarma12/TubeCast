@@ -41,7 +41,6 @@ const Watch = () => {
       return likecount;
     }
   };
-  console.log("Data from Watch", data?.videoData?.snippet?.description);
   const formatCommentCount = (comment) => {
     if (comment >= 1000000) {
       return ((comment / 1000000)).toFixed(2) + 'M';

@@ -4,7 +4,6 @@ import useVideoId from '../utils/useVideoId'
 import { Link } from 'react-router-dom';
 const ShortsCard = ({ info }) => {
   const {data} = useVideoId(info?.id?.videoId);
-  console.log("likesCount", data);
   const viewFormat = (views) => {
     let res;
     if (views >= 1000000)
