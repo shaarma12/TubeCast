@@ -10,7 +10,7 @@ const Recommend = ({ Recomm }) => {
   return (
     <div className="border-t-[0.5px] border-[#8888] mt-[5.5rem]">
       {searchData.map((i) => {
-       return <RecommendCard key={i?.id?.videoId} VideoData={i} />
+        return <RecommendCard key={i?.id?.videoId} VideoData={i} />;
       })}
     </div>
   );

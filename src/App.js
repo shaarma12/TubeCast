@@ -16,25 +16,25 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <VideoContainer/>
+        element: <VideoContainer />,
       },
       {
         path: "watch",
-        element: <Watch />
+        element: <Watch />,
       },
       {
         path: "results",
-        element: <SearchData />
+        element: <SearchData />,
       },
       {
         path: "shorts/:shortId",
-        element: <ShortsWatch/>,
+        element: <ShortsWatch />,
       },
       {
         path: "forms",
-        element:<Forms/>
-      }
-    ]
+        element: <Forms />,
+      },
+    ],
   },
 ]);
 
@@ -49,5 +49,5 @@ const App = () => {
       </div>
     </Provider>
   );
-}
+};
 export default App;

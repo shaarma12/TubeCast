@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { YOUTUBE_API } from '../constant'
-import Video from './Video';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { YOUTUBE_API } from "../constant";
+import Video from "./Video";
+import { useSelector } from "react-redux";
 
 const VideoContainer = () => {
   const toggle = useSelector((store) => store.Toggle.flag);
@@ -11,24 +11,28 @@ const VideoContainer = () => {
     const data = await fetch(YOUTUBE_API);
     const response = await data.json();
     setYouTubeData(response);
-  }
+  };
 
   useEffect(() => {
     fetchData();
-  }, [])
+  }, []);
   return (
     <div>
-      {toggle?<div className='ml-[4.2rem] mt-8 flex flex-wrap gap-3 h-[38rem] overflow-y-scroll no-scrollbar'>
-        {youtubeData?.items.map((i) => {
-          return <Video key={ i?.id} data={i} />
-        })}
-      </div>:<div className='ml-[4.2rem] mt-8 flex flex-wrap gap-5'>
-        {youtubeData?.items.map((i) => {
-          return <Video key={ i?.id} data={i} />
-        })}
-      </div>}
+      {toggle ? (
+        <div className="ml-[4.2rem] mt-8 flex flex-wrap gap-3 h-[38rem] overflow-y-scroll no-scrollbar">
+          {youtubeData?.items.map((i) => {
+            return <Video key={i?.id} data={i} />;
+          })}
+        </div>
+      ) : (
+        <div className="ml-[4.2rem] mt-8 flex flex-wrap gap-5">
+          {youtubeData?.items.map((i) => {
+            return <Video key={i?.id} data={i} />;
+          })}
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default VideoContainer
+export default VideoContainer;

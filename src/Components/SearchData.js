@@ -8,7 +8,7 @@ const SearchData = () => {
   let params = searchParams.get("search_query");
   // calling the custom hook for search data.
   const { searchData } = useSearchVideo({ params });
-  
+
   return (
     <div className="h-[37rem] overflow-y-scroll no-scrollbar">
       {searchData.map((i, index) => {
