@@ -110,7 +110,7 @@ const RecommendCard = ({ VideoData }) => {
               : VideoData?.snippet?.title}
           </p>
           <p className="text-[#AAAAAA] text-sm font-semibold mt-1">
-            {VideoData?.snippet?.channelTitle}
+            {VideoData?.snippet?.channelTitle.length >31?VideoData?.snippet?.channelTitle.slice(0,30)+"...":VideoData?.snippet?.channelTitle}
           </p>
           <div className="text-[#AAAAAA] text-sm font-semibold flex">
             <p className="mr-1">{viewFormat(data?.statistics?.viewCount)}</p>
