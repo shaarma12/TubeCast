@@ -3,8 +3,8 @@ import useSearchVideo from "../utils/useSearchVideo";
 import RecommendCard from "./RecommendCard";
 
 const Recommend = ({ Recomm }) => {
-  const RecommendWord = Recomm && Recomm.match(/#\w+/);
-  const params = RecommendWord[0].slice(1);
+  const RecommendWord = Recomm.match(/#\w+/);
+  const params = RecommendWord ? RecommendWord[0].slice(1) : " ";
   const { searchData } = useSearchVideo({ params });
 
   return (
